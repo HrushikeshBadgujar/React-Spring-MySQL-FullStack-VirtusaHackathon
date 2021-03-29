@@ -1,3 +1,4 @@
+package com.example.model;
 
 public class FeedbackModel {
 	private String feedbackId;
@@ -25,3 +26,4 @@ public class FeedbackModel {
 	
 	
 }
+

@@ -1,3 +1,4 @@
+package com.example.model;
 
 public class UserModel {
 	private String email;
@@ -70,3 +71,4 @@ public class UserModel {
     
     
 }
+

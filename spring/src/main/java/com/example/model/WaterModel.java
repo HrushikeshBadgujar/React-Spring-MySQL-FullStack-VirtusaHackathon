@@ -1,4 +1,6 @@
 
+package com.example.model;
+
 public class WaterModel {
 	private String waterPressure;
 	private String waterDesc;

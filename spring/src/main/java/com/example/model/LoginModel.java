@@ -1,4 +1,6 @@
 
+package com.example.model;
+
 public class LoginModel {
     private String email;
     private String password;

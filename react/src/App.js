@@ -1,24 +1,30 @@
 import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import "./App.css";
+
+import AddFeedback from './components/User/AddFeedback';
+import GetWaterInfo from './components/User/GetWaterInfo';
+import AddWaterInfo from './components/User/AddWaterInfo';
+import Signup from './components/User/Signup';
+import Login from './components/User/Login';
+import NavBar from './components/NavBar';
+
+import {Route, Link} from "react-router-dom";
+
+
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <div className="App">
+    <NavBar />
+    <Route exact path="/" component={Login} />
+    <Route exact path="/Signup" component={Signup} />
+    <Route exact path="/GetWaterInfo" component={GetWaterInfo} />
+    <Route exact path="/AddWaterInfo" component={AddWaterInfo} />
+    <Route exact path="/AddFeedback" component={AddFeedback} />
+  </div>
   );
 }
 

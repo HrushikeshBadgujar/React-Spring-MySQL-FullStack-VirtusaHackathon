@@ -1,10 +1,15 @@
 
-package com.example.model;
-
 public class WaterModel {
 	private String waterPressure;
 	private String waterDesc;
 	private String city;
+	private String location;
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
+	}
 	//userId: userModel
 	//feedback: feedbackmodel
 	public String getWaterPressure() {
@@ -25,11 +30,12 @@ public class WaterModel {
 	public void setCity(String city) {
 		this.city = city;
 	}
-	public WaterModel(String waterPressure, String waterDesc, String city) {
+	public WaterModel(String waterPressure, String waterDesc, String city, String location) {
 		super();
 		this.waterPressure = waterPressure;
 		this.waterDesc = waterDesc;
 		this.city = city;
+		this.location = location;
 	}
 	public WaterModel() {
 		super();

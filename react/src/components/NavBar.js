@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import {Link} from "react-router-dom";
 import { Container } from 'reactstrap';
+import tap from '../images/tap.jfif';
 import { Navbar,Nav,NavDropdown } from 'react-bootstrap';
 
 function NavBar(){
@@ -18,9 +19,20 @@ return (
           <NavDropdown.Item href="/AddWaterInfo">Add Water Info</NavDropdown.Item>
           <NavDropdown.Item href="/GetWaterInfo">Update Water Info</NavDropdown.Item>
         </NavDropdown>
+        
+        {/* Admin Section Checking */}
+        <NavDropdown title="Admin" id="collasible-nav-dropdown">
+          <NavDropdown.Item href="/GetAllWaterInfo">All Water Info</NavDropdown.Item>
+          <NavDropdown.Item href="/GetAllFeedback">All Feedback</NavDropdown.Item>
+          <NavDropdown.Item href="/GetFeedbackId">Feedback by Id</NavDropdown.Item>
+        </NavDropdown>
+
       </Nav>
+
+
       <Nav>
-        <Nav.Link href="/AddFeedback">Feedback</Nav.Link>
+        <Nav.Link href="/AddFeedback">Add Feedback</Nav.Link>
+        <Nav.Link href="/GetFeedback">Get Feedback</Nav.Link>
       </Nav>
     </Navbar.Collapse>
   </Navbar>

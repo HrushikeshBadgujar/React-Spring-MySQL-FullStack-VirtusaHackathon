@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import image from '../../images/water.jfif'
-import addman from '../../images/addman.jfif'
+import feed from '../../images/feedback.png'
+
 import tap from '../../images/tap.jfif'
 
 class AddFeedback extends Component {
@@ -37,7 +38,7 @@ class AddFeedback extends Component {
                         <div className="rows" >
                             
 
-                           <div class="cols"> <img src={addman} alt="add" /></div>
+                           <div class="cols"> <img src={feed} alt="add" /></div>
                            <div class="cols"><h2> AddFeedback </h2></div>
                            <div class="cols"><img src={tap} alt="tap" /></div>
                             

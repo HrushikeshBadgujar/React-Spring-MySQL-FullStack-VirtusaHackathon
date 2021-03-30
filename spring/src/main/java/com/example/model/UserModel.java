@@ -4,13 +4,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.ID;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "user")
 public class UserModel {
-	@ID
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long userid;
 
@@ -85,8 +85,8 @@ public class UserModel {
 			this.lastName = lastName;
 			this.password = password;
 			this.mobileNo = mobileNo;
-			this.active = active;
-			this.role = role;
+			// this.active = active;
+			// this.role = role;
 		}
 	public UserModel() {
 		super();

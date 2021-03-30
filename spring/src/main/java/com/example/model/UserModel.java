@@ -1,13 +1,36 @@
 package com.example.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.ID;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "user")
 public class UserModel {
+	@ID
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long userid;
+
+	@Column(name = "email_id")
 	private String email;
+
+	@Column(name = "first_name")
 	private String firstName;
+
+	@Column(name = "last_name")
 	private String lastName;
+
+	@Column(name = "password")
 	private String password;
+
+	@Column(name = "mobile_no")
     private String mobileNo;
-    private boolean active;
-    private String role;
+
+    // private boolean active;
+    // private String role;
     
  
 	public String getFirstName() {
@@ -41,18 +64,18 @@ public class UserModel {
 	public void setMobileNo(String mobileNo) {
 		this.mobileNo = mobileNo;
 	}
-	public boolean isActive() {
-		return active;
-	}
-	public void setActive(boolean active) {
-		this.active = active;
-	}
-	public String getRole() {
-		return role;
-	}
-	public void setRole(String role) {
-		this.role = role;
-	}
+	// public boolean isActive() {
+	// 	return active;
+	// }
+	// public void setActive(boolean active) {
+	// 	this.active = active;
+	// }
+	// public String getRole() {
+	// 	return role;
+	// }
+	// public void setRole(String role) {
+	// 	this.role = role;
+	// }
 	
 	 public UserModel(String email, String firstName, String lastName, String password, String mobileNo, boolean active,
 				String role) {

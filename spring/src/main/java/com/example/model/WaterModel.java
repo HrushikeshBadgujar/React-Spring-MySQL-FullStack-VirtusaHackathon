@@ -3,15 +3,16 @@ public class WaterModel {
 	private String waterPressure;
 	private String waterDesc;
 	private String city;
-	private String location;
+	private String location;            //location means areaname
+	public UserModel userid;
+	public FeedbackModel feedbackID;
 	public String getLocation() {
 		return location;
 	}
 	public void setLocation(String location) {
 		this.location = location;
 	}
-	//userId: userModel
-	//feedback: feedbackmodel
+
 	public String getWaterPressure() {
 		return waterPressure;
 	}

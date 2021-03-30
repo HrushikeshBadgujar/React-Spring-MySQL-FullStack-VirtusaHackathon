@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import edit from '../../images/edit.jfif';
+import edit from '../../images/edit.png';
 
 class GetWaterInfo extends Component {
 

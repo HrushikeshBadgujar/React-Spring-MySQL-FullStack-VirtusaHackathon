@@ -14,6 +14,7 @@ public class FeedbackModel {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "feedback_id")
 	private long feedbackId;
 
 	@Column(name = "feedbac_decs")

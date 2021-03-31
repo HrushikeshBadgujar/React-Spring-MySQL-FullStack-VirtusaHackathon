@@ -37,9 +37,9 @@ public class WaterController {
 
     // get water info by id
     @GetMapping("getWaterInfo/{id}")
-    public ResponseEntity< WaterModel> getWaterInfoById(@PathVariable UserModel  user){
-        WaterModel waterModel = waterRepo.findById(user.getUserid()).orElseThrow(() -> 
-            new ResourceNotFoundException("waterInfo not exist for this userid"+ user.getUserid()));
+    public ResponseEntity< WaterModel> getWaterInfoById(@PathVariable String id){
+        WaterModel waterModel = waterRepo.findById(id).orElseThrow(() -> 
+            new ResourceNotFoundException("waterInfo not exist for this id"+ id));
 
         return ResponseEntity.ok(waterModel);
 
@@ -47,10 +47,10 @@ public class WaterController {
 
     // update waterInfo
     @PutMapping("/admin/{id}")
-    public ResponseEntity <WaterModel> waterInfoUpdate(@PathVariable UserModel userid, @RequestBody WaterModel waterModelDetails){
+    public ResponseEntity <WaterModel> waterInfoUpdate(@PathVariable String id, @RequestBody WaterModel waterModelDetails){
 
-        WaterModel waterModel = waterRepo.findById(userid.getUserid()).orElseThrow(() -> 
-            new ResourceNotFoundException("waterInfo not exist for this userid"+ userid.getUserid()));
+        WaterModel waterModel = waterRepo.findById(id).orElseThrow(() -> 
+            new ResourceNotFoundException("waterInfo not exist for this id"+ id));
 
         waterModel.setCity(waterModelDetails.getCity());
         waterModel.setLocation(waterModelDetails.getLocation());
@@ -70,9 +70,9 @@ public class WaterController {
 
     //delete water info
     @DeleteMapping("/admin/{id}")
-    public ResponseEntity<Map<String,Boolean>> waterInfoDelete(@PathVariable UserModel user){
-        WaterModel waterModel = waterRepo.findById(user.getUserid()).orElseThrow(() -> 
-            new ResourceNotFoundException("waterInfo not exist for this userid"+ user.getUserid()));
+    public ResponseEntity<Map<String,Boolean>> waterInfoDelete(@PathVariable String id){
+        WaterModel waterModel = waterRepo.findById(id).orElseThrow(() -> 
+            new ResourceNotFoundException("waterInfo not exist for this userid"+ id));
 
         waterRepo.delete(waterModel);
         Map<String,Boolean> response = new HashMap<>();

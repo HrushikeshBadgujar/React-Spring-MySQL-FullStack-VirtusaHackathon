@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
-import image from '../../images/water.jfif'
-import addman from '../../images/newUser.png'
-import tap from '../../images/tap.jfif'
+
+import UserServices from '../../Services/UserServices'
 
 import {Container} from 'react-bootstrap';
 import {Col} from 'react-bootstrap';
 import {Row} from 'react-bootstrap';
 import {Button} from 'react-bootstrap';
-import {Table} from 'react-bootstrap';
-import {InputGroup} from 'react-bootstrap';
-import {FormControl} from 'react-bootstrap';
 import {Form} from 'react-bootstrap';
 
 
@@ -25,6 +21,13 @@ class AddWaterInfo extends Component {
             waterdesc: '',
             waterpres: ''            
         }
+
+        this.handleAreanameChange = this.handleAreanameChange.bind(this);
+        this.handleDurationChange = this.handleDurationChange.bind(this);
+        this.handleCityChange = this.handleCityChange.bind(this);
+        this.handleWaterDescChange = this.handleWaterDescChange.bind(this);
+        this.handleWaterPresChange = this.handleWaterPresChange.bind(this);
+        this.submitWaterInfo = this.submitWaterInfo.bind(this);        
     }
 
     handleAreanameChange = (event) => {
@@ -55,6 +58,30 @@ class AddWaterInfo extends Component {
         this.setState({
             waterpres: event.target.value
         })
+    }
+
+    submitWaterInfo = (e) => {
+        e.preventDefault();
+        let WaterTable = {areaname:this.state.areaname, duration: this.state.duration, city: this.state.city, waterdesc: this.state.waterdesc, waterpres:this.state.waterpres};
+        console.log('WaterTable => ' + JSON.stringify(WaterTable));
+
+        
+        UserServices.AddWaterInfo(WaterTable).then(res =>{
+//          path(/employees) => same page     
+//          this.props.history.push('/employees');
+        });
+
+        // // step 5
+        // if(this.state.id === '_add'){
+        //     EmployeeService.createEmployee(employee).then(res =>{
+        //         this.props.history.push('/employees');
+        //     });
+        // }
+        // else{
+        //     EmployeeService.updateEmployee(employee, this.state.id).then( res => {
+        //         this.props.history.push('/employees');
+        //     });
+        // }
     }
 
     render() {
@@ -119,7 +146,8 @@ class AddWaterInfo extends Component {
 
                 <Form.Group as={Row}>
                     <Col sm={{ span: 10, offset: 2 }}>
-                    <Button type="submit">Submit</Button>
+
+                    <Button className="btn btn-success" onClick={this.submitWaterInfo} type="submit" >Submit</Button>
                     </Col>
                 </Form.Group>
             </Form>

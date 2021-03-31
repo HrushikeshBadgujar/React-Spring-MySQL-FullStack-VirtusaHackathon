@@ -5,10 +5,6 @@ import { isEmail } from 'validator';
 import {Container} from 'react-bootstrap';
 import {Col} from 'react-bootstrap';
 import {Row} from 'react-bootstrap';
-import {Table} from 'react-bootstrap';
-import {InputGroup} from 'react-bootstrap';
-import {FormControl} from 'react-bootstrap';
-
 class Register extends Component {
 
     constructor(props) {

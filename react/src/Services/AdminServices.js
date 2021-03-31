@@ -8,21 +8,26 @@ class AdminService {
         return axios.get(EMPLOYEE_API_BASE_URL);
     }
 
-    deleteWaterInfo(employeeId){
-        return axios.delete(EMPLOYEE_API_BASE_URL + '/' + employeeId);
+    deleteWaterInfo(userId){
+        return axios.delete(EMPLOYEE_API_BASE_URL + '/' + userId);
     }
 
-    updateWaterInfo(employee, employeeId){
-        return axios.put(EMPLOYEE_API_BASE_URL + '/' + employeeId, employee);
+    updateWaterInfo(WaterTable, userId){
+        return axios.put(EMPLOYEE_API_BASE_URL + '/' + WaterTable, userId);
     }
 
     getAllFeedback(){
         return axios.get(EMPLOYEE_API_BASE_URL);
     }
 
-    getFeedback(employeeId){
-        return axios.get(EMPLOYEE_API_BASE_URL + '/' + employeeId);
+    getFeedbackId(userId){
+        return axios.get(EMPLOYEE_API_BASE_URL + '/' + userId);
     }
+    
+    deleteFeedback(feedbackId){
+        return axios.get(EMPLOYEE_API_BASE_URL + '/' + feedbackId);
+    }
+
 
 
     

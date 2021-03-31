@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import search from '../../images/search_small.png';
 
+import AdminServices from '../../Services/AdminServices';
+
 
 import {Container} from 'react-bootstrap';
 import {Col} from 'react-bootstrap';
@@ -15,11 +17,46 @@ class GetAllFeedback extends Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            userid: '',
+            feedback: '',
+        }
+
+        this.handleUseridChange = this.handleUseridChange.bind(this);
+        this.handleFeedbackChange = this.handleFeedbackChange.bind(this);
+
+    }
+
+    componentDidMount(){
+        AdminServices.getAllFeedback(this.state.userid).then( (res) =>{
+            let FeedbackTable = res.data;
+            this.setState({
+                userid : FeedbackTable.userid,
+                feedback : FeedbackTable.feedback,
+                 
+            });
+        });
+    }
+
+
+    handleUseridChange = (event) => {
+        this.setState({
+            userid: event.target.value
+        })
+    }
+
+    handleFeedbackChange = (event) => {
+        this.setState({
+            feedback: event.target.value
+        })
     }
 
 
     render() {
+        const {userid, feedback} = this.state
+
         return (
+            
 
             <Container>
                 <Row >
@@ -39,16 +76,12 @@ class GetAllFeedback extends Component {
                         <tr>
                         <td>
                             <InputGroup className="mb-3">
-                                <FormControl
-                                    placeholder="UserID"
-                                />
+                                <FormControl placeholder="UserID" value={userid} onChange={this.handleUseridChange}/>
                             </InputGroup>
                         </td>
                         <td>
                             <InputGroup className="mb-3">
-                                <FormControl
-                                    placeholder="Display Feedbacks"
-                                />
+                                <FormControl placeholder="Display Feedbacks" value={feedback} onChange={this.handleFeedbackChange}/>
                             </InputGroup>
                         </td>
                         </tr>

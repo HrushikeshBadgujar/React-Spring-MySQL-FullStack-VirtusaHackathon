@@ -4,10 +4,6 @@ import { Form, Input, Label, FormGroup, FormFeedback, Button } from 'reactstrap'
 import {Container} from 'react-bootstrap';
 import {Col} from 'react-bootstrap';
 import {Row} from 'react-bootstrap';
-import {Table} from 'react-bootstrap';
-import {InputGroup} from 'react-bootstrap';
-import {FormControl} from 'react-bootstrap';
-
 
 class Login extends Component {
 

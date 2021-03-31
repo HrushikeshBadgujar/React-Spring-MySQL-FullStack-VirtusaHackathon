@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import edit from '../../images/edit_small.png';
 import del from '../../images/delete_small.png';
-import tap from '../../images/tap.jfif';
 import search from '../../images/search_small.png';
 
+import AdminServices from '../../Services/AdminServices';
 
 import {Container} from 'react-bootstrap';
 import {Col} from 'react-bootstrap';
@@ -12,14 +12,109 @@ import {Button} from 'react-bootstrap';
 import {Table} from 'react-bootstrap';
 import {InputGroup} from 'react-bootstrap';
 import {FormControl} from 'react-bootstrap';
+import {Form} from 'react-bootstrap';
 
 class GetAllWaterInfo extends Component {
 
     constructor(props) {
         super(props);
 
+        this.state = {
+
+            userid: this.props.match.params.id,
+            mobileno : '',
+            areaname: '',
+            duration: '',
+            city: ''
+                        
+        }
+
     }
 
+
+    componentDidMount(){
+        AdminServices.getAllWaterInfo(this.state.userid).then( (res) =>{
+            let WaterTable = res.data;
+            this.setState({
+            
+                userid : WaterTable.userid, 
+                mobileno : WaterTable.mobileno,
+                areaname : WaterTable.areaname,
+                duration : WaterTable.duration,
+                city : WaterTable.city,
+            });
+        });
+    }
+
+    handleUserIdChange = (event) => {
+        this.setState({
+            userid: event.target.value
+        })
+    }
+
+    handleAreanameChange = (event) => {
+        this.setState({
+            areaname: event.target.value
+        })
+    }
+
+    handleDurationChange = (event) => {
+        this.setState({
+            duration: event.target.value
+        })
+    }
+
+    handleCityChange = (event) => {
+        this.setState({
+            city: event.target.value
+        })
+    }
+
+    handleMobileChange = (event) => {
+        this.setState({
+            mobileno: event.target.value
+        })
+    }
+
+
+    EditWaterInfo = (e) => {
+        e.preventDefault();
+        let WaterTable = { userid:this.state.userid, areaname:this.state.areaname, duration: this.state.duration, city: this.state.city, mobileno:this.state.mobileno};
+        console.log('WaterTable => ' + JSON.stringify(WaterTable));
+
+        
+        AdminServices.updateWaterInfo(WaterTable).then(res =>{
+//          path(/employees) => same page     
+//          this.props.history.push('/employees');
+        });
+
+    }
+
+    DeleteWaterInfo = (e) => {
+        e.preventDefault();
+        let WaterTable = { userid:this.state.userid,areaname:this.state.areaname, duration: this.state.duration, city: this.state.city, mobileno:this.state.mobileno};
+        console.log('WaterTable => ' + JSON.stringify(WaterTable));
+
+        
+        AdminServices.deleteWaterInfo(WaterTable).then(res =>{
+//          path(/employees) => same page     
+//          this.props.history.push('/employees');
+        });
+
+    }
+
+    
+    UpdateWaterInfo = (e) => {
+        e.preventDefault();
+        let WaterTable = {mobileno:this.state.mobileno, userid:this.state.userid,areaname:this.state.areaname, duration: this.state.duration, city: this.state.city};
+        console.log('WaterTable => ' + JSON.stringify(WaterTable));
+
+        
+        AdminServices.updateWaterInfo(WaterTable).then(res =>{
+//          path(/employees) => same page     
+//          this.props.history.push('/employees');
+        });
+    }
 
     render() {
         return (
@@ -80,11 +175,18 @@ class GetAllWaterInfo extends Component {
                                 />
                             </InputGroup>
                         </td>
-                        <td href="#"><Button variant="danger" ><img src={del} alt="delete" /></Button></td>
-                        <td href="#"><Button variant="warning" ><img src={edit} alt="edit" /></Button></td>
+                        <td href="#"><Button variant="danger" onClick={this.DeleteWaterInfo}><img src={del} alt="delete" /></Button></td>
+                        <td href="#"><Button variant="warning" onClick={this.EditWaterInfo}><img src={edit} alt="edit" /></Button></td>
                         </tr>
                     </tbody>
                 </Table>
+                <Form>
+                <Form.Group as={Row}>
+                    <Col >
+                    <Button  onClick={this.UpdateWaterInfo} type="update" >Update</Button>
+                    </Col>
+                </Form.Group>
+                </Form>
             </Container>
 
             // <div class="container">

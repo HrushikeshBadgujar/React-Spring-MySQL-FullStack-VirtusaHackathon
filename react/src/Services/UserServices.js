@@ -1,31 +1,34 @@
 import axios from 'axios';
 
-const EMPLOYEE_API_BASE_URL = " _ ";
+const EMPLOYEE_API_BASE_URL = "UserTable";
+//const EMPLOYEE_API_BASE_URL = "WaterTable";
+//const EMPLOYEE_API_BASE_URL = "FeedbackTable";
+
 
 class UserService {
 
-    createUser(employee){
-        return axios.post(EMPLOYEE_API_BASE_URL, employee);
+    createUser(UserTable){
+        return axios.post(EMPLOYEE_API_BASE_URL, UserTable);
     }
     
-    checkUser(employee){
-        return axios.post(EMPLOYEE_API_BASE_URL, employee);
+    checkUser(UserTable){
+        return axios.post(EMPLOYEE_API_BASE_URL, UserTable);
     }
     
-    addWaterInfo(employee){
-        return axios.post(EMPLOYEE_API_BASE_URL, employee);
+    addWaterInfo(WaterTable){
+        return axios.post(EMPLOYEE_API_BASE_URL, WaterTable);
     }
 
-    getWaterInfoById(employeeId){
-        return axios.get(EMPLOYEE_API_BASE_URL + '/' + employeeId);
+    getWaterInfoById(UserId){
+        return axios.get(EMPLOYEE_API_BASE_URL + '/' + UserId);
     }
 
-    addFeedback(employee){
-        return axios.post(EMPLOYEE_API_BASE_URL, employee);
+    addFeedback(FeedbackTable){
+        return axios.post(EMPLOYEE_API_BASE_URL, FeedbackTable);
     }
 
-    getFeedbackById(employeeId){
-        return axios.get(EMPLOYEE_API_BASE_URL + '/' + employeeId);
+    getFeedback(UserTable){
+        return axios.get(EMPLOYEE_API_BASE_URL + '/' + UserTable);
     }
     
 }

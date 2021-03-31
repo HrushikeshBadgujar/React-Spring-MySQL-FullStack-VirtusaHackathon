@@ -3,6 +3,9 @@ import edit from '../../images/edit_small.png';
 import search from '../../images/search_small.png';
 
 
+import UserServices from '../../Services/UserServices'
+
+
 import {Container} from 'react-bootstrap';
 import {Col} from 'react-bootstrap';
 import {Row} from 'react-bootstrap';
@@ -16,12 +19,106 @@ class GetWaterInfo extends Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+
+            userid: this.props.match.params.id,
+
+            areaname: '',
+            duration: '',
+            city: '',
+            waterdesc: '',
+            waterpres: ''            
+        }
+
+        this.handleAreanameChange = this.handleAreanameChange.bind(this);
+        this.handleDurationChange = this.handleDurationChange.bind(this);
+        this.handleCityChange = this.handleCityChange.bind(this);
+        this.handleWaterDescChange = this.handleWaterDescChange.bind(this);
+        this.handleWaterPresChange = this.handleWaterPresChange.bind(this);
+        this.UpdateWaterInfo = this.UpdateWaterInfo.bind(this);        
+
+    }
+
+    componentDidMount(){
+        UserServices.getWaterInfoById(this.state.userid).then( (res) =>{
+            let WaterTable = res.data;
+            this.setState({
+                areaname : WaterTable.areaname,
+                duration : WaterTable.duration,
+                city : WaterTable.city,
+                waterdesc : WaterTable.waterdesc,
+                waterpres : WaterTable.waterpres,
+               userid : WaterTable.userid, 
+            });
+        });
+    }
+
+    handleUserIdChange = (event) => {
+        this.setState({
+            userid: event.target.value
+        })
+    }
+
+    handleAreanameChange = (event) => {
+        this.setState({
+            areaname: event.target.value
+        })
+    }
+
+    handleDurationChange = (event) => {
+        this.setState({
+            duration: event.target.value
+        })
+    }
+
+    handleCityChange = (event) => {
+        this.setState({
+            city: event.target.value
+        })
+    }
+
+    handleWaterDescChange = (event) => {
+        this.setState({
+            waterdesc: event.target.value
+        })
+    }
+
+    handleWaterPresChange = (event) => {
+        this.setState({
+            waterpres: event.target.value
+        })
+    }
+
+    UpdateWaterInfo = (e) => {
+        e.preventDefault();
+        let WaterTable = {userid:this.state.userid,areaname:this.state.areaname, duration: this.state.duration, city: this.state.city, waterdesc: this.state.waterdesc, waterpres:this.state.waterpres};
+        console.log('WaterTable => ' + JSON.stringify(WaterTable));
+
+        
+        UserServices.UpdateWaterInfo(WaterTable).then(res =>{
+//          path(/employees) => same page     
+//          this.props.history.push('/employees');
+        });
+
+        // // step 5
+        // if(this.state.id === '_add'){
+        //     EmployeeService.createEmployee(employee).then(res =>{
+        //         this.props.history.push('/employees');
+        //     });
+        // }
+        // else{
+        //     EmployeeService.updateEmployee(employee, this.state.id).then( res => {
+        //         this.props.history.push('/employees');
+        //     });
+        // }
     }
 
 
     render() {
-        return (
+        const {userid, areaname, duration, city, waterdesc, waterpres } = this.state
 
+        return (
+            
             <Container>
             <Row >
                 <Col ><Button variant="primary" block><h3>Get Water Info</h3></Button></Col>
@@ -60,12 +157,22 @@ class GetWaterInfo extends Component {
             </Row>
             <br></br>
             <Form>
+
+                <Form.Group as={Row} controlId="formHorizontalUserID">
+                    <Form.Label column sm={2} >
+                    UserID
+                    </Form.Label>
+                    <Col sm={10}>
+                    <Form.Control type="userid" placeholder="UserID" value={userid} onChange={this.handleUserIdChange}/>
+                    </Col>
+                </Form.Group>
+
                 <Form.Group as={Row} controlId="formHorizontalAreaname">
                     <Form.Label column sm={2} >
                     Areaname
                     </Form.Label>
                     <Col sm={10}>
-                    <Form.Control type="areaname" placeholder="Areaname" />
+                    <Form.Control type="areaname" placeholder="Areaname" value={areaname} onChange={this.handleAreanameChange}/>
                     </Col>
                 </Form.Group>
 
@@ -74,7 +181,7 @@ class GetWaterInfo extends Component {
                     Duration
                     </Form.Label>
                     <Col sm={10}>
-                    <Form.Control type="duration" placeholder="Duration" />
+                    <Form.Control type="duration" placeholder="Duration" value={duration} onChange={this.handleDurationChange}/>
                     </Col>
                 </Form.Group>
 
@@ -83,7 +190,7 @@ class GetWaterInfo extends Component {
                     City
                     </Form.Label>
                     <Col sm={10}>
-                    <Form.Control type="city" placeholder="City" />
+                    <Form.Control type="city" placeholder="City" value={city} onChange={this.handleCityChange}/>
                     </Col>
                 </Form.Group>
 
@@ -93,7 +200,7 @@ class GetWaterInfo extends Component {
                     WaterDesc
                     </Form.Label>
                     <Col sm={10}>
-                    <Form.Control type="waterdesc" placeholder="WaterDesc"  />
+                    <Form.Control type="waterdesc" placeholder="WaterDesc"  value={waterdesc} onChange={this.handleWaterDescChange}/>
                     </Col>
                 </Form.Group>
 
@@ -103,13 +210,14 @@ class GetWaterInfo extends Component {
                     WaterPres
                     </Form.Label>
                     <Col sm={10}>
-                    <Form.Control type="waterpres" placeholder="WaterPres"  />
+                    <Form.Control type="waterpres" placeholder="WaterPres"  value={waterpres} onChange={this.handleWaterPresChange}/>
                     </Col>
                 </Form.Group>
 
                 <Form.Group as={Row}>
                     <Col sm={{ span: 10, offset: 2 }}>
-                    <Button type="update">Update</Button>
+                    <Button  onClick={this.submitWaterInfo} type="update" >Update</Button>
+                    
                     </Col>
                 </Form.Group>
             </Form>

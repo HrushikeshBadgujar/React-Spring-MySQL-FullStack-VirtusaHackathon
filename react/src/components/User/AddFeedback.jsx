@@ -1,16 +1,11 @@
 import React, { Component } from 'react';
-import image from '../../images/water.jfif'
-import feed from '../../images/feedback.png'
 
-import tap from '../../images/tap.jfif'
+import UserServices from '../../Services/UserServices'
 
 import {Container} from 'react-bootstrap';
 import {Col} from 'react-bootstrap';
 import {Row} from 'react-bootstrap';
 import {Button} from 'react-bootstrap';
-import {Table} from 'react-bootstrap';
-import {InputGroup} from 'react-bootstrap';
-import {FormControl} from 'react-bootstrap';
 import {Form} from 'react-bootstrap';
 
 class AddFeedback extends Component {
@@ -22,6 +17,9 @@ class AddFeedback extends Component {
             userid: '',
             feedback: '',
         }
+        this.handleUseridChange = this.handleUseridChange.bind(this);
+        this.handleFeedbackChange = this.handleFeedbackChange.bind(this);
+        this.submitFeedback = this.submitFeedback.bind(this);        
     }
 
     handleUseridChange = (event) => {
@@ -34,6 +32,30 @@ class AddFeedback extends Component {
         this.setState({
             feedback: event.target.value
         })
+    }
+
+    submitFeedback = (e) => {
+        e.preventDefault();
+        let FeedbackTable = {userid :this.state.userid, feedback:this.state.feedback};
+        console.log('FeedbackTable => ' + JSON.stringify(FeedbackTable));
+
+        
+        UserServices.addFeedback(FeedbackTable).then(res =>{
+//          path(/employees) => AddWaterInfo
+//          this.props.history.push('/employees');
+        });
+
+        // // step 5
+        // if(this.state.id === '_add'){
+        //     EmployeeService.createEmployee(employee).then(res =>{
+        //         this.props.history.push('/employees');
+        //     });
+        // }
+        // else{
+        //     EmployeeService.updateEmployee(employee, this.state.id).then( res => {
+        //         this.props.history.push('/employees');
+        //     });
+        // }
     }
 
 
@@ -64,9 +86,7 @@ class AddFeedback extends Component {
                         <Form.Control as="textarea" rows={3} value={feedback} onChange={this.handleFeedbackChange}/>
                     </Form.Group>
 
-                    <Button variant="primary" type="submit">
-                        Submit
-                    </Button>
+                    <Button  onClick={this.submitFeedback} type="submit" >Submit</Button>
                 </Form>
 
              </Container>

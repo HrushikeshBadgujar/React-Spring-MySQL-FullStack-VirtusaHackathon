@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import search from '../../images/search_small.png';
 import del from '../../images/delete_small.png';
 
+import AdminServices from '../../Services/AdminServices';
 
 import {Container} from 'react-bootstrap';
 import {Col} from 'react-bootstrap';
@@ -18,10 +19,59 @@ class GetFeedbackId extends Component {
     constructor(props) {
         super(props);
 
+        
+        this.state = {
+            userid: '',
+            feedback: '',
+        }
+        
+        this.handleUseridChange = this.handleUseridChange.bind(this);
+        this.handleFeedbackChange = this.handleFeedbackChange.bind(this);
+        this.DeleteFeedback = this.DeleteFeedback.bind(this);        
+
+    }
+
+    componentDidMount(){
+        AdminServices.getFeedbackId(this.state.userid).then( (res) =>{
+            let FeedbackTable = res.data;
+            this.setState({
+                userid : FeedbackTable.userid,
+                feedback : FeedbackTable.feedback,
+                 
+            });
+        });
+    }
+
+
+    handleUseridChange = (event) => {
+        this.setState({
+            userid: event.target.value
+        })
+    }
+
+    handleFeedbackChange = (event) => {
+        this.setState({
+            feedback: event.target.value
+        })
+    }
+
+    DeleteFeedback = (e) => {
+        e.preventDefault();
+        let FeedbackTable = { userid:this.state.userid,areaname:this.state.areaname, duration: this.state.duration, city: this.state.city, mobileno:this.state.mobileno};
+        console.log('FeedbackTaable => ' + JSON.stringify(FeedbackTable));
+
+        
+        AdminServices.deleteFeedback(FeedbackTable).then(res =>{
+//          path(/employees) => same page     
+//          this.props.history.push('/employees');
+        });
+
     }
 
 
     render() {
+        const {userid, feedback} = this.state
+
         return (
 
             <Container>
@@ -53,12 +103,10 @@ class GetFeedbackId extends Component {
                     <tr>
                     <td>
                         <InputGroup className="mb-3">
-                            <FormControl
-                                placeholder="DisplayFeedbacks"
-                            />
+                            <FormControl placeholder="DisplayFeedbacks" value={feedback} onChange={this.handleFeedbackChange}/>
                         </InputGroup>
                     </td>
-                    <td href="#"><Button variant="danger" ><img src={del} alt="delete" /></Button></td>
+                    <td href="#"><Button variant="danger" onClick={this.DeleteFeedback}><img src={del} alt="delete" /></Button></td>
                     </tr>
                 </tbody>
             </Table>

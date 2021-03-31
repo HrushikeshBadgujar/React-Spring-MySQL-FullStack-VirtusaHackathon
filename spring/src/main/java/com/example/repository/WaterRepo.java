@@ -1,5 +1,6 @@
 package com.example.repository;
 
+import com.example.model.UserModel;
 import com.example.model.WaterModel;
 
 import org.springframework.data.jpa.repository.JpaRepository;

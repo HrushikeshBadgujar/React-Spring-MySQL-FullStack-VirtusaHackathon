@@ -1,19 +1,14 @@
+package com.example.model;
 
-<<<<<<< HEAD
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.ID;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "waterInfo")
-=======
-package com.example.model;
-
->>>>>>> 2f76eade0cbe612cb6ed7c1b60bac7379670861e
 public class WaterModel {
+
 	@Column(name = "water_pressure")
 	private String waterPressure;
 
@@ -26,53 +21,73 @@ public class WaterModel {
 	@Column(name = "location")
 	private String location;            //location means areaname
 
-	@ID
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public UserModel userid;
+	@Id
+    @Column(name = "user_id")
+	public String userid;
 
-	@ID
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public FeedbackModel feedbackID;
+	@Column(name = "feedback")
+	private String feedback;
 
-<<<<<<< HEAD
-=======
-	
->>>>>>> 2f76eade0cbe612cb6ed7c1b60bac7379670861e
-	public String getLocation() {
-		return location;
-	}
-	public void setLocation(String location) {
-		this.location = location;
+	public WaterModel() {
 	}
 
 	public String getWaterPressure() {
 		return waterPressure;
 	}
+
 	public void setWaterPressure(String waterPressure) {
 		this.waterPressure = waterPressure;
 	}
+
 	public String getWaterDesc() {
 		return waterDesc;
 	}
+
 	public void setWaterDesc(String waterDesc) {
 		this.waterDesc = waterDesc;
 	}
+
 	public String getCity() {
 		return city;
 	}
+
 	public void setCity(String city) {
 		this.city = city;
 	}
-	public WaterModel(String waterPressure, String waterDesc, String city, String location) {
-		super();
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public String getUserid() {
+		return userid;
+	}
+
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+
+	public String getFeedback() {
+		return feedback;
+	}
+
+	public void setFeedback(String feedback) {
+		this.feedback = feedback;
+	}
+
+	public WaterModel(String waterPressure, String waterDesc, String city, String location, String userid,
+			String feedback) {
 		this.waterPressure = waterPressure;
 		this.waterDesc = waterDesc;
 		this.city = city;
 		this.location = location;
+		this.userid = userid;
+		this.feedback = feedback;
 	}
-	public WaterModel() {
-		super();
-	}
-	
+
 	
 }

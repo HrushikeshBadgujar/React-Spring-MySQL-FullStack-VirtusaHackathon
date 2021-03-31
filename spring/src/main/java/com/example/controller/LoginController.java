@@ -1,32 +1,28 @@
 package com.example.controller;
 
-import com.example.model.UserModel;
-import com.example.repository.UserRepo;
+import com.example.repository.LoginRepo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 @CrossOrigin(origins = "http://localhost:3000")     //change it later
 @RestController
-@RequestMapping("/api/vi/")
-public class SignupController {
+@RequestMapping("/api/v1/")
+
+
+public class LoginController {
 
     @Autowired
-    private UserRepo userRepo;
+    private LoginRepo loginRepo;
 
-    @PostMapping("/signup")
-    public UserModel saveUser(@RequestBody UserModel userModel){
-        return userRepo.save(userModel);
-
-    }
-
+    //@PostMapping("/login")
+    
 
 
     
+
     
 }

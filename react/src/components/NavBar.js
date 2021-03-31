@@ -14,7 +14,7 @@ return (
     <Navbar.Collapse id="responsive-navbar-nav">
       <Nav className="mr-auto">
         <Nav.Link href="/">Login</Nav.Link>
-        <Nav.Link href="/Signup">Register</Nav.Link>
+        <Nav.Link href="/Signup">Signup</Nav.Link>
         <NavDropdown title="Water Info" id="collasible-nav-dropdown">
           <NavDropdown.Item href="/AddWaterInfo">Add Water Info</NavDropdown.Item>
           <NavDropdown.Item href="/GetWaterInfo">Update Water Info</NavDropdown.Item>

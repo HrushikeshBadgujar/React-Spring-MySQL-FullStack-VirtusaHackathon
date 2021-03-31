@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +9,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "waterInfo")
+=======
+package com.example.model;
+
+>>>>>>> 2f76eade0cbe612cb6ed7c1b60bac7379670861e
 public class WaterModel {
 	@Column(name = "water_pressure")
 	private String waterPressure;
@@ -29,6 +34,10 @@ public class WaterModel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public FeedbackModel feedbackID;
 
+<<<<<<< HEAD
+=======
+	
+>>>>>>> 2f76eade0cbe612cb6ed7c1b60bac7379670861e
 	public String getLocation() {
 		return location;
 	}

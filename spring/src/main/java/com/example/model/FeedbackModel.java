@@ -14,24 +14,24 @@ public class FeedbackModel {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String feedbackId;
+	private long feedbackId;
 
 	@Column(name = "feedbac_decs")
 	private String feedbacDesc;
-	//I think we dont require set and get method for feedbackid as we do in usermodel for userid 
-	// public String getFeedbackId() {
-	// 	return feedbackId;
-	// }
-	// public void setFeedbackId(String feedbackId) {
-	// 	this.feedbackId = feedbackId;
-	// }
+ 
+	public long getFeedbackId() {
+		return feedbackId;
+	}
+	public void setFeedbackId(long feedbackId) {
+		this.feedbackId = feedbackId;
+	}
 	public String getFeedbacDesc() {
 		return feedbacDesc;
 	}
 	public void setFeedbacDesc(String feedbacDesc) {
 		this.feedbacDesc = feedbacDesc;
 	}
-	public FeedbackModel(String feedbackId, String feedbacDesc) {
+	public FeedbackModel(long feedbackId, String feedbacDesc) {
 		super();
 		this.feedbackId = feedbackId;
 		this.feedbacDesc = feedbacDesc;

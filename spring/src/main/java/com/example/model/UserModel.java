@@ -14,23 +14,26 @@ public class UserModel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long userid;
 
-	@Column(name = "email_id")
+	@Column(nullable = false, unique = true, length = 45, name = "email_id")
 	private String email;
 
-	@Column(name = "first_name")
+	@Column(name = "first_name", nullable = false, length = 20)
 	private String firstName;
 
-	@Column(name = "last_name")
+	@Column(name = "last_name", nullable = false, length = 20)
 	private String lastName;
 
-	@Column(name = "password")
+	@Column(nullable = false, length = 64, name = "password")
 	private String password;
 
-	@Column(name = "mobile_no")
+	@Column(name = "mobile_no", nullable = false, length = 10)
     private String mobileNo;
 
-    // private boolean active;
-    // private String role;
+	@Column(name = "active", nullable = false)
+    private boolean active;
+
+	@Column(name = "role", nullable = false)
+     private String role;
     
  
 	public String getFirstName() {
@@ -64,18 +67,18 @@ public class UserModel {
 	public void setMobileNo(String mobileNo) {
 		this.mobileNo = mobileNo;
 	}
-	// public boolean isActive() {
-	// 	return active;
-	// }
-	// public void setActive(boolean active) {
-	// 	this.active = active;
-	// }
-	// public String getRole() {
-	// 	return role;
-	// }
-	// public void setRole(String role) {
-	// 	this.role = role;
-	// }
+	public boolean isActive() {
+		return active;
+	}
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
 	
 	 public UserModel(String email, String firstName, String lastName, String password, String mobileNo, boolean active,
 				String role) {
@@ -85,8 +88,8 @@ public class UserModel {
 			this.lastName = lastName;
 			this.password = password;
 			this.mobileNo = mobileNo;
-			// this.active = active;
-			// this.role = role;
+			this.active = active;
+			this.role = role;
 		}
 	public UserModel() {
 		super();

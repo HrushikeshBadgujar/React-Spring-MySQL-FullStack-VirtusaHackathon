@@ -26,7 +26,16 @@ public class SignupController {
     }
 
 
-
+//     @PostMapping("/process_register")
+//     public String processRegister(UserModel user) {
+//     BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+//     String encodedPassword = passwordEncoder.encode(user.getPassword());
+//     user.setPassword(encodedPassword);
+     
+//     userRepo.save(user);
+     
+//     return "register_success";
+// }
     
     
 }

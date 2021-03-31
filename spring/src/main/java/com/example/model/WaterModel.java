@@ -1,15 +1,43 @@
 
+<<<<<<< HEAD
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.ID;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "waterInfo")
+=======
 package com.example.model;
 
+>>>>>>> 2f76eade0cbe612cb6ed7c1b60bac7379670861e
 public class WaterModel {
+	@Column(name = "water_pressure")
 	private String waterPressure;
+
+	@Column(name = "water_desc")
 	private String waterDesc;
+
+	@Column(name = "city")
 	private String city;
+
+	@Column(name = "location")
 	private String location;            //location means areaname
+
+	@ID
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public UserModel userid;
+
+	@ID
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public FeedbackModel feedbackID;
 
+<<<<<<< HEAD
+=======
 	
+>>>>>>> 2f76eade0cbe612cb6ed7c1b60bac7379670861e
 	public String getLocation() {
 		return location;
 	}

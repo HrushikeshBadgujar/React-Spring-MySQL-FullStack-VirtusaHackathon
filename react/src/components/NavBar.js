@@ -13,18 +13,19 @@ return (
     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
     <Navbar.Collapse id="responsive-navbar-nav">
       <Nav className="mr-auto">
-        <Nav.Link href="/">Login</Nav.Link>
-        <Nav.Link href="/Signup">Signup</Nav.Link>
+        <Nav.Link href="/login">Login</Nav.Link>
+        <Nav.Link href="/signup">Signup</Nav.Link>
         <NavDropdown title="Water Info" id="collasible-nav-dropdown">
-          <NavDropdown.Item href="/AddWaterInfo">Add Water Info</NavDropdown.Item>
+          <NavDropdown.Item href="/addInfo">Add Water Info</NavDropdown.Item>
+          {/*  */}
           <NavDropdown.Item href="/GetWaterInfo">Update Water Info</NavDropdown.Item>
         </NavDropdown>
         
         {/* Admin Section Checking */}
         <NavDropdown title="Admin" id="collasible-nav-dropdown">
           <NavDropdown.Item href="/admin">All Water Info</NavDropdown.Item>
-          <NavDropdown.Item href="/GetAllFeedback">All Feedback</NavDropdown.Item>
-          <NavDropdown.Item href="/GetFeedbackId">Feedback by Id</NavDropdown.Item>
+          <NavDropdown.Item href="/admin/feedback">All Feedback</NavDropdown.Item>
+          <NavDropdown.Item href="/admin/feedback/{id}">Feedback by Id</NavDropdown.Item>
         </NavDropdown>
 
       </Nav>

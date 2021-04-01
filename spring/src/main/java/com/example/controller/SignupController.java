@@ -4,6 +4,7 @@ import com.example.model.UserModel;
 import com.example.repository.UserRepo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,8 +21,15 @@ public class SignupController {
     private UserRepo userRepo;
 
     @PostMapping("/signup")
-    public UserModel saveUser(@RequestBody UserModel userModel){
-        return userRepo.save(userModel);
+    public String saveUser(@RequestBody UserModel userModel){
+
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();     
+        String encodedPassword = passwordEncoder.encode(userModel.getPassword());
+        userModel.setPassword(encodedPassword);
+
+        userRepo.save(userModel);
+        return "register_success";
+        
 
     }
 

@@ -63,6 +63,7 @@ class Register extends Component {
         if (Object.keys(errors).length === 0) {
             console.log(data);
             //Call an api here
+            
             //Resetting the form
             this.setState(this.getInitialState());
         } else {

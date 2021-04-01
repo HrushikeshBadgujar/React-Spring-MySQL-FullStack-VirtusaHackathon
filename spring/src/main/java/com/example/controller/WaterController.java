@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.example.exception.ResourceNotFoundException;
-import com.example.model.UserModel;
 import com.example.model.WaterModel;
 import com.example.repository.WaterRepo;
 

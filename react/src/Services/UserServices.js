@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const EMPLOYEE_API_BASE_URL = "http://localhost:8080/api/v1/";
+const EMPLOYEE_API_BASE_URL = "http://localhost:8081/api/v1/";
 //const EMPLOYEE_API_BASE_URL = "WaterTable";
 //const EMPLOYEE_API_BASE_URL = "FeedbackTable";
 
@@ -8,27 +8,27 @@ const EMPLOYEE_API_BASE_URL = "http://localhost:8080/api/v1/";
 class UserService {
 
     createUser(UserTable){
-        return axios.post(EMPLOYEE_API_BASE_URL, UserTable);
+        return axios.post(EMPLOYEE_API_BASE_URL + "/signup", UserTable);
     }
     
     checkUser(UserTable){
-        return axios.post(EMPLOYEE_API_BASE_URL, UserTable);
+        return axios.post(EMPLOYEE_API_BASE_URL+ "/login", UserTable);
     }
     
     addWaterInfo(WaterTable){
-        return axios.post(EMPLOYEE_API_BASE_URL, WaterTable);
+        return axios.post(EMPLOYEE_API_BASE_URL +"/addInfo", WaterTable);
     }
 
     getWaterInfoById(UserId){
-        return axios.get(EMPLOYEE_API_BASE_URL + '/' + UserId);
+        return axios.get(EMPLOYEE_API_BASE_URL + "/getWaterInfo/" + UserId);
     }
 
     addFeedback(FeedbackTable){
-        return axios.post(EMPLOYEE_API_BASE_URL, FeedbackTable);
+        return axios.post(EMPLOYEE_API_BASE_URL+"/addFeedback", FeedbackTable);
     }
 
     getFeedback(UserTable){
-        return axios.get(EMPLOYEE_API_BASE_URL + '/' + UserTable);
+        return axios.get(EMPLOYEE_API_BASE_URL + '/getFeedback' + UserTable);
     }
     
 }

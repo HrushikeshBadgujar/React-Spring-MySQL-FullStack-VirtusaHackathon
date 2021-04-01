@@ -23,11 +23,11 @@ class GetAllWaterInfo extends Component {
 
             WaterTable : [],
 
-            userid: this.props.match.params.id,
-            mobileno : '',
-            areaname: '',
-            duration: '',
-            city: ''
+            // userid: this.props.match.params.id,
+            // mobileno : '',
+            // areaname: '',
+            // duration: '',
+            // city: ''
                         
         }
 
@@ -35,16 +35,17 @@ class GetAllWaterInfo extends Component {
 
 
     componentDidMount(){
-        AdminServices.getAllWaterInfo(this.state.userid).then( (res) =>{
-            let WaterTable = res.data;
-            this.setState({
+        AdminServices.getAllWaterInfo().then( (res) =>{
+            this.setState({ WaterTable: res.data});
+            // let WaterTable = res.data;
+            // this.setState({
             
-                userid : WaterTable.userid, 
-                mobileno : WaterTable.mobileno,
-                areaname : WaterTable.areaname,
-                duration : WaterTable.duration,
-                city : WaterTable.city,
-            });
+            //     userid : WaterTable.userid, 
+            //     mobileno : WaterTable.mobileno,
+            //     areaname : WaterTable.areaname,
+            //     duration : WaterTable.duration,
+            //     city : WaterTable.city,
+            // });
         });
     }
 
@@ -145,11 +146,11 @@ class GetAllWaterInfo extends Component {
                             this.state.WaterTable.map(
                                 WaterTable =>
                                 <tr key = {WaterTable.id}>
-                                    <td>WaterTable.mobileno</td>
-                                    <td>WaterTable.userid</td>
-                                    <td>WaterTable.areaname</td>
-                                    <td>WaterTable.duration</td>
-                                    <td>WaterTable.city</td>
+                                    <td>{WaterTable.mobileno}</td>
+                                    <td>{WaterTable.userid}</td>
+                                    <td>{WaterTable.location}</td>
+                                    <td>{WaterTable.duration}</td>
+                                    <td>{WaterTable.city}</td>
                                     <td href="#"><Button variant="danger" onClick={this.DeleteWaterInfo}><img src={del} alt="delete" /></Button></td>
                                     <td href="#"><Button variant="warning" onClick={this.EditWaterInfo}><img src={edit} alt="edit" /></Button></td>
                         

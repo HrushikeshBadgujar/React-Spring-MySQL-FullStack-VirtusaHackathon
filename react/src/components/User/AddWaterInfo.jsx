@@ -66,7 +66,7 @@ class AddWaterInfo extends Component {
         console.log('WaterTable => ' + JSON.stringify(WaterTable));
 
         
-        UserServices.AddWaterInfo(WaterTable).then(res =>{
+        UserServices.addWaterInfo(WaterTable).then(res =>{
 //          path(/employees) => same page     
 //          this.props.history.push('/employees');
         });
@@ -111,7 +111,7 @@ class AddWaterInfo extends Component {
                     Duration
                     </Form.Label>
                     <Col sm={10}>
-                    <Form.Control type="duration" placeholder="Duration" value={duration} onChange={this.handleDurationChange}/>
+                    <Form.Control type="time" placeholder="Duration" value={duration} onChange={this.handleDurationChange}/>
                     </Col>
                 </Form.Group>
 

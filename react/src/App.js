@@ -25,18 +25,21 @@ function App() {
   return (
   <div className="App">
     <NavBar />
-    <Route exact path="/" component={Login} />
-    <Route exact path="/Signup" component={Signup} />
-    <Route exact path="/GetWaterInfo" component={GetWaterInfo} />
-    <Route exact path="/AddWaterInfo" component={AddWaterInfo} />
-    <Route exact path="/AddFeedback" component={AddFeedback} />
-    <Route exact path="/GetFeedback" component={GetFeedback} />
+    <Route exact path="/login" component={Login} />
+   {/*  */}
+    <Route exact path="/signup" component={Signup} />
+    <Route exact path="/getWaterInfo" component={GetWaterInfo} />
+    <Route exact path="/addInfo" component={AddWaterInfo} />
+    <Route exact path="/addFeedback" component={AddFeedback} />
+    <Route exact path="/getFeedback" component={GetFeedback} />
     
 
     {/* Admin Section Checking */}
+    
     <Route exact path="/admin" component={GetAllWaterInfo} />
-    <Route exact path="/GetFeedbackId" component={GetFeedbackId} />
-    <Route exact path="/GetAllFeedback" component={GetAllFeedback} />
+    {/*  */}
+    <Route exact path="/admin/GetFeedbackId" component={GetFeedbackId} />
+    <Route exact path="/admin/feedback" component={GetAllFeedback} />
 
 
   </div>

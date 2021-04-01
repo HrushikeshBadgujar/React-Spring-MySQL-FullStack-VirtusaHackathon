@@ -5,6 +5,8 @@ import { isEmail } from 'validator';
 import {Container} from 'react-bootstrap';
 import {Col} from 'react-bootstrap';
 import {Row} from 'react-bootstrap';
+
+import UserServices from '../../Services/UserServices'
 class Register extends Component {
 
     constructor(props) {
@@ -24,6 +26,21 @@ class Register extends Component {
         },
         errors: {}
     });
+
+    componentDidMount(){
+        UserServices.createUser(this.state.userid).then( (res) =>{
+            let UserTable = res.data;
+            this.setState({
+            
+                userid : UserTable.userid, 
+                firstName : UserTable.firstName,
+                lastName : UserTable.lastName,
+                password : UserTable.password,
+                email : UserTable.email,
+                mobileno : UserTable.mobileno,
+            });
+        });
+    }
 
     handleChange = (e) => {
         this.setState({

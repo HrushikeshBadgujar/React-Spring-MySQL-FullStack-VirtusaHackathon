@@ -5,6 +5,8 @@ import {Container} from 'react-bootstrap';
 import {Col} from 'react-bootstrap';
 import {Row} from 'react-bootstrap';
 
+
+import UserServices from '../../Services/UserServices'
 class Login extends Component {
 
     constructor(props) {
@@ -20,6 +22,17 @@ class Login extends Component {
         },
         errors: {}
     });
+
+    componentDidMount(){
+        UserServices.checkUser(this.state.userid).then( (res) =>{
+            let UserTable = res.data;
+            this.setState({
+            
+                password : UserTable.password,
+                email : UserTable.email,
+            });
+        });
+    }
 
     handleChange = (e) => {
         this.setState({

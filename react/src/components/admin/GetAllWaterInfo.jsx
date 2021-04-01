@@ -21,6 +21,8 @@ class GetAllWaterInfo extends Component {
 
         this.state = {
 
+            WaterTable : [],
+
             userid: this.props.match.params.id,
             mobileno : '',
             areaname: '',
@@ -139,45 +141,21 @@ class GetAllWaterInfo extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                        <td>
-                            <InputGroup className="mb-3">
-                                <FormControl
-                                    placeholder="Mobileno"
-                                />
-                            </InputGroup>
-                        </td>
-                        <td>
-                            <InputGroup className="mb-3">
-                                <FormControl
-                                    placeholder="UserId"
-                                />
-                            </InputGroup>
-                        </td>
-                        <td>
-                            <InputGroup className="mb-3">
-                                <FormControl
-                                    placeholder="Areaname"
-                                />
-                            </InputGroup>
-                        </td>
-                        <td>
-                            <InputGroup className="mb-3">
-                                <FormControl
-                                    placeholder="Duration"
-                                />
-                            </InputGroup>
-                        </td>
-                        <td>
-                            <InputGroup className="mb-3">
-                                <FormControl
-                                    placeholder="City"
-                                />
-                            </InputGroup>
-                        </td>
-                        <td href="#"><Button variant="danger" onClick={this.DeleteWaterInfo}><img src={del} alt="delete" /></Button></td>
-                        <td href="#"><Button variant="warning" onClick={this.EditWaterInfo}><img src={edit} alt="edit" /></Button></td>
-                        </tr>
+                        {
+                            this.state.WaterTable.map(
+                                WaterTable =>
+                                <tr key = {WaterTable.id}>
+                                    <td>WaterTable.mobileno</td>
+                                    <td>WaterTable.userid</td>
+                                    <td>WaterTable.areaname</td>
+                                    <td>WaterTable.duration</td>
+                                    <td>WaterTable.city</td>
+                                    <td href="#"><Button variant="danger" onClick={this.DeleteWaterInfo}><img src={del} alt="delete" /></Button></td>
+                                    <td href="#"><Button variant="warning" onClick={this.EditWaterInfo}><img src={edit} alt="edit" /></Button></td>
+                        
+                                </tr> 
+                            )
+                        }
                     </tbody>
                 </Table>
                 <Form>

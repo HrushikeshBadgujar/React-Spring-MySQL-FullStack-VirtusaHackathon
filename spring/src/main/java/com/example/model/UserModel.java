@@ -12,13 +12,7 @@ public class UserModel {
 	@Column(name = "user_id")
 	private String userid;
 
-<<<<<<< HEAD
 	@Column(nullable = false, unique = true, length = 45, name = "email_id")
-=======
-	// @OneToOne(cascade = CascadeType.ALL)
-    // @JoinColumn(name = "email_id", referencedColumnName = "id")
-	@Column(name = "email_id", unique = true)
->>>>>>> e0c82ded7f3d2193eeb09c902c0db095406f02e0
 	private String email;
 
 	@Column(name = "first_name", nullable = false, length = 20)
@@ -55,16 +49,6 @@ public class UserModel {
 		this.email = email;
 	}
 
-<<<<<<< HEAD
-	@Column(name = "active", nullable = false)
-    private boolean active;
-
-	@Column(name = "role", nullable = false)
-     private String role;
-    
- 
-=======
->>>>>>> e0c82ded7f3d2193eeb09c902c0db095406f02e0
 	public String getFirstName() {
 		return firstName;
 	}
@@ -96,7 +80,6 @@ public class UserModel {
 	public void setMobileNo(String mobileNo) {
 		this.mobileNo = mobileNo;
 	}
-<<<<<<< HEAD
 	public boolean isActive() {
 		return active;
 	}
@@ -121,37 +104,6 @@ public class UserModel {
 			this.active = active;
 			this.role = role;
 		}
-=======
-
-	public boolean isActive() {
-		return active;
-	}
-
-	public void setActive(boolean active) {
-		this.active = active;
-	}
-
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
-
-	public UserModel(String userid, String email, String firstName, String lastName, String password, String mobileNo,
-			boolean active, String role) {
-		this.userid = userid;
-		this.email = email;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.password = password;
-		this.mobileNo = mobileNo;
-		this.active = active;
-		this.role = role;
-	}
-
->>>>>>> e0c82ded7f3d2193eeb09c902c0db095406f02e0
 	public UserModel() {
 	}
     

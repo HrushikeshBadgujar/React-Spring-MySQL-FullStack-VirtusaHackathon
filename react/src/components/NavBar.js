@@ -22,7 +22,7 @@ return (
         
         {/* Admin Section Checking */}
         <NavDropdown title="Admin" id="collasible-nav-dropdown">
-          <NavDropdown.Item href="/GetAllWaterInfo">All Water Info</NavDropdown.Item>
+          <NavDropdown.Item href="/admin">All Water Info</NavDropdown.Item>
           <NavDropdown.Item href="/GetAllFeedback">All Feedback</NavDropdown.Item>
           <NavDropdown.Item href="/GetFeedbackId">Feedback by Id</NavDropdown.Item>
         </NavDropdown>

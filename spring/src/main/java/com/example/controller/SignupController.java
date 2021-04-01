@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-@CrossOrigin(origins = "http://localhost:3000")     //change it later
+@CrossOrigin(origins = "http://localhost:8082")     //change it later
 @RestController
 @RequestMapping("/api/vi/")
 public class SignupController {

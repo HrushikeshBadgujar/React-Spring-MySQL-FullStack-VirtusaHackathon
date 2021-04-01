@@ -34,7 +34,7 @@ function App() {
     
 
     {/* Admin Section Checking */}
-    <Route exact path="/GetAllWaterInfo" component={GetAllWaterInfo} />
+    <Route exact path="/admin" component={GetAllWaterInfo} />
     <Route exact path="/GetFeedbackId" component={GetFeedbackId} />
     <Route exact path="/GetAllFeedback" component={GetAllFeedback} />
 

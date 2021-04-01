@@ -15,14 +15,18 @@ class AddWaterInfo extends Component {
         super(props);
 
         this.state = {
-            areaname: '',
+            location: '',
             duration: '',
             city: '',
             waterdesc: '',
-            waterpres: ''            
+            waterpres: '',
+            userid : ''
+
         }
 
-        this.handleAreanameChange = this.handleAreanameChange.bind(this);
+        this.handleUserIdChange = this.handleUserIdChange.bind(this);
+        
+        this.handleLocationChange = this.handleLocationChange.bind(this);
         this.handleDurationChange = this.handleDurationChange.bind(this);
         this.handleCityChange = this.handleCityChange.bind(this);
         this.handleWaterDescChange = this.handleWaterDescChange.bind(this);
@@ -30,9 +34,16 @@ class AddWaterInfo extends Component {
         this.submitWaterInfo = this.submitWaterInfo.bind(this);        
     }
 
-    handleAreanameChange = (event) => {
+
+    handleUserIdChange = (event) => {
         this.setState({
-            areaname: event.target.value
+            userid: event.target.value
+        })
+    }
+
+    handleLocationChange = (event) => {
+        this.setState({
+            location: event.target.value
         })
     }
 
@@ -62,13 +73,13 @@ class AddWaterInfo extends Component {
 
     submitWaterInfo = (e) => {
         e.preventDefault();
-        let WaterTable = {areaname:this.state.areaname, duration: this.state.duration, city: this.state.city, waterdesc: this.state.waterdesc, waterpres:this.state.waterpres};
+        let WaterTable = {userid:this.userid,location:this.state.location, duration: this.state.duration, city: this.state.city, waterdesc: this.state.waterdesc, waterpres:this.state.waterpres};
         console.log('WaterTable => ' + JSON.stringify(WaterTable));
 
         
         UserServices.addWaterInfo(WaterTable).then(res =>{
 //          path(/employees) => same page     
-//          this.props.history.push('/employees');
+          this.props.history.push('/admin');
         });
 
         // // step 5
@@ -85,7 +96,7 @@ class AddWaterInfo extends Component {
     }
 
     render() {
-        const { areaname, duration, city, waterdesc, waterpres } = this.state
+        const { location, userid, duration, city, waterdesc, waterpres } = this.state
         return (
         
             <Container>
@@ -97,12 +108,21 @@ class AddWaterInfo extends Component {
             <br></br>
             
             <Form>
-                <Form.Group as={Row} controlId="formHorizontalAreaname">
+                <Form.Group as={Row} controlId="formHorizontalUserId">
                     <Form.Label column sm={2} >
-                    Areaname
+                    UserID
                     </Form.Label>
                     <Col sm={10}>
-                    <Form.Control type="areaname" placeholder="Areaname" value={areaname} onChange={this.handleAreanameChange}/>
+                    <Form.Control type="text" placeholder="UserID" value={userid} onChange={this.handleUserIdChange}/>
+                    </Col>
+                </Form.Group>
+
+                <Form.Group as={Row} controlId="formHorizontalAreaname">
+                    <Form.Label column sm={2} >
+                    Location
+                    </Form.Label>
+                    <Col sm={10}>
+                    <Form.Control type="text" placeholder="Location" value={location} onChange={this.handleLocationChange}/>
                     </Col>
                 </Form.Group>
 

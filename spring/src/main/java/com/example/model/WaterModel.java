@@ -1,5 +1,7 @@
 package com.example.model;
 
+import java.sql.Time;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -9,11 +11,11 @@ import javax.persistence.Table;
 @Table(name = "waterInfo")
 public class WaterModel {
 
-	@Column(name = "water_pressure")
-	private String waterPressure;
+	@Column(name = "waterpres")
+	private String waterpres;
 
-	@Column(name = "water_desc")
-	private String waterDesc;
+	@Column(name = "waterdesc")
+	private String waterdesc;
 
 	@Column(name = "city")
 	private String city;
@@ -22,29 +24,32 @@ public class WaterModel {
 	private String location;            //location means areaname
 
 	@Id
-    @Column(name = "user_id")
+    @Column(name = "userid")
 	public String userid;
 
-	@Column(name = "feedback")
-	private String feedback;
+	// @Column(name = "feedback")
+	// private String feedback;
+
+	@Column(name = "duration")
+	private Time duration;
 
 	public WaterModel() {
 	}
 
-	public String getWaterPressure() {
-		return waterPressure;
+	public String getWaterPres() {
+		return waterpres;
 	}
 
-	public void setWaterPressure(String waterPressure) {
-		this.waterPressure = waterPressure;
+	public void setWaterPres(String waterpres) {
+		this.waterpres = waterpres;
 	}
 
 	public String getWaterDesc() {
-		return waterDesc;
+		return waterdesc;
 	}
 
-	public void setWaterDesc(String waterDesc) {
-		this.waterDesc = waterDesc;
+	public void setWaterDesc(String waterdesc) {
+		this.waterdesc = waterdesc;
 	}
 
 	public String getCity() {
@@ -71,22 +76,32 @@ public class WaterModel {
 		this.userid = userid;
 	}
 
-	public String getFeedback() {
-		return feedback;
+	// public String getFeedback() {
+	// 	return feedback;
+	// }
+
+	// public void setFeedback(String feedback) {
+	// 	this.feedback = feedback;
+	// }
+
+	
+	public Time getDuration() {
+		return duration;
 	}
 
-	public void setFeedback(String feedback) {
-		this.feedback = feedback;
+	public void setDuration(Time duration) {
+		this.duration = duration;
 	}
 
-	public WaterModel(String waterPressure, String waterDesc, String city, String location, String userid,
-			String feedback) {
-		this.waterPressure = waterPressure;
-		this.waterDesc = waterDesc;
+	public WaterModel(String waterpres, String waterdesc, String city, String location, String userid,
+			Time duration) {
+		this.waterpres = waterpres;
+		this.waterdesc = waterdesc;
 		this.city = city;
 		this.location = location;
 		this.userid = userid;
-		this.feedback = feedback;
+		this.duration = duration;
+	//	this.feedback = feedback;
 	}
 
 	

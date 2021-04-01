@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin(origins = "http://localhost:8082")     //change it later
+@CrossOrigin(origins = "http://localhost:8080")     //change it later
 @RestController
 @RequestMapping("/api/v1/")
 public class WaterController {
@@ -54,7 +54,7 @@ public class WaterController {
         waterModel.setCity(waterModelDetails.getCity());
         waterModel.setLocation(waterModelDetails.getLocation());
         waterModel.setWaterDesc(waterModelDetails.getWaterDesc());
-        waterModel.setWaterPressure(waterModelDetails.getWaterPressure());
+        waterModel.setWaterPres(waterModelDetails.getWaterPres());
         
 
         WaterModel updatedWaterModel = waterRepo.save(waterModel);
@@ -63,7 +63,8 @@ public class WaterController {
 
     //adds new water Info
     @PostMapping("/addInfo")
-    public WaterModel waterInfoSave(@RequestBody WaterModel waterModel){
+    public WaterModel addWaterInfo(@RequestBody WaterModel waterModel){
+ //       System.out.println(waterModel.toString());
         return waterRepo.save(waterModel); 
     }
 

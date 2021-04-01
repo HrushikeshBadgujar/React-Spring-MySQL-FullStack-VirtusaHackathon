@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const EMPLOYEE_API_BASE_URL = "http://localhost:8081/api/v1/";
+const EMPLOYEE_API_BASE_URL = "http://localhost:54287/api/v1/";
 //const EMPLOYEE_API_BASE_URL = "WaterTable";
 //const EMPLOYEE_API_BASE_URL = "FeedbackTable";
 
@@ -16,6 +16,8 @@ class UserService {
     }
     
     addWaterInfo(WaterTable){
+        console.log('WaterTable => ' + JSON.stringify(WaterTable));
+
         return axios.post(EMPLOYEE_API_BASE_URL +"/addInfo", WaterTable);
     }
 

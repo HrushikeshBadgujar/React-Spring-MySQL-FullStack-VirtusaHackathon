@@ -8,6 +8,7 @@ import com.example.exception.ResourceNotFoundException;
 import com.example.model.WaterModel;
 import com.example.repository.WaterRepo;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -64,7 +65,7 @@ public class WaterController {
     //adds new water Info
     @PostMapping("/addInfo")
     public WaterModel addWaterInfo(@RequestBody WaterModel waterModel){
- //       System.out.println(waterModel.toString());
+      System.out.println(waterModel.toString());
         return waterRepo.save(waterModel); 
     }
 

@@ -18,14 +18,14 @@ return (
         <NavDropdown title="Water Info" id="collasible-nav-dropdown">
           <NavDropdown.Item href="/addInfo">Add Water Info</NavDropdown.Item>
           {/*  */}
-          <NavDropdown.Item href="/GetWaterInfo">Update Water Info</NavDropdown.Item>
+          <NavDropdown.Item href="/GetWaterInfo/:id">Update Water Info</NavDropdown.Item>
         </NavDropdown>
         
         {/* Admin Section Checking */}
         <NavDropdown title="Admin" id="collasible-nav-dropdown">
           <NavDropdown.Item href="/admin">All Water Info</NavDropdown.Item>
           <NavDropdown.Item href="/admin/feedback">All Feedback</NavDropdown.Item>
-          <NavDropdown.Item href="/admin/feedback/{id}">Feedback by Id</NavDropdown.Item>
+          <NavDropdown.Item href="/admin/feedback/:id">Feedback by Id</NavDropdown.Item>
         </NavDropdown>
 
       </Nav>

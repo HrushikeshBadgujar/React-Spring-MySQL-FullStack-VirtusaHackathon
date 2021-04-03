@@ -1,6 +1,8 @@
 package com.example.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.example.exception.ResourceNotFoundException;
 import com.example.model.FeedbackModel;
@@ -40,7 +42,7 @@ public class FeedBackController {
 
     // get feedback by id 
     @GetMapping("/admin/feedBack/{id}")
-    public ResponseEntity <FeedbackModel> getFeedbackById(@PathVariable Long feedbackId){
+    public ResponseEntity <FeedbackModel> getFeedbackById(@PathVariable String feedbackId){
         FeedbackModel feedbackModel = feedBackRepo.findById(feedbackId).orElseThrow(()-> new ResourceNotFoundException("feedback not found for id: "+ feedbackId));
         return ResponseEntity.ok(feedbackModel);
 

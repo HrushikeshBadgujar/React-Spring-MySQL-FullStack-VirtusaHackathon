@@ -18,46 +18,21 @@ class GetAllFeedback extends Component {
         super(props);
 
         this.state = {
-            userid: '',
-            feedback: '',
+            FeedbackTable : [],
         }
 
-        this.handleUseridChange = this.handleUseridChange.bind(this);
-        this.handleFeedbackChange = this.handleFeedbackChange.bind(this);
 
     }
 
     componentDidMount(){
-        AdminServices.getAllFeedback(this.state.userid).then( (res) =>{
-            let FeedbackTable = res.data;
-            this.setState({
-                userid : FeedbackTable.userid,
-                feedback : FeedbackTable.feedback,
-                 
-            });
+        AdminServices.getAllFeedback().then( (res) =>{
+            this.setState({FeedbackTable: res.data});
         });
     }
 
 
-    handleUseridChange = (event) => {
-        this.setState({
-            userid: event.target.value
-        })
-    }
-
-    handleFeedbackChange = (event) => {
-        this.setState({
-            feedback: event.target.value
-        })
-    }
-
-
     render() {
-        const {userid, feedback} = this.state
-
         return (
-            
-
             <Container>
                 <Row >
                     <Col ><Button variant="primary" block><h3>All Feedback</h3></Button></Col>
@@ -73,52 +48,18 @@ class GetAllFeedback extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                        <td>
-                            <InputGroup className="mb-3">
-                                <FormControl placeholder="UserID" value={userid} onChange={this.handleUseridChange}/>
-                            </InputGroup>
-                        </td>
-                        <td>
-                            <InputGroup className="mb-3">
-                                <FormControl placeholder="Display Feedbacks" value={feedback} onChange={this.handleFeedbackChange}/>
-                            </InputGroup>
-                        </td>
-                        </tr>
+                        {
+                            this.state.FeedbackTable.map(
+                                FeedbackTable =>
+                                <tr key = {FeedbackTable.id}> 
+                                    <td>{FeedbackTable.feedbackId}</td>
+                                    <td>{FeedbackTable.feedbackDesc}</td>
+                                </tr>
+                            )
+                        } 
                     </tbody>
                 </Table>
             </Container>
-
-            
-        //     <div class="container">
-        //     <div class="row">
-        //         <div class="col-sm-4 ">
-        //             <h1>All Feedback </h1>
-        //         </div>
-        //         <div class="col-sm-4 ">
-        //         </div>
-        //         <div class="col-sm-3 ">
-        //             <h3>Search Feedback</h3>
-        //         </div>
-        //         <div class="col-sm-1 ">
-        //             <img src={search} alt="search" />
-        //         </div>
-        //     </div>
-
-        //     <div >
-        //         <div >
-        //             <label>UserID</label>
-        //             <input type="email" placeholder="Display" />
-        //         </div>  
-
-        //             <br></br>
-        //             <div >
-        //                 <input type="text"  placeholder="Display Feedback" />
-        //             </div>
-        //     </div>
-
-             
-        // </div>
         );
     }
 }

@@ -12,6 +12,7 @@ import {Table} from 'react-bootstrap';
 import {InputGroup} from 'react-bootstrap';
 import {FormControl} from 'react-bootstrap';
 import {Form} from 'react-bootstrap';
+import Feedback from 'react-bootstrap/esm/Feedback';
 
 
 class GetFeedbackId extends Component {
@@ -21,26 +22,43 @@ class GetFeedbackId extends Component {
 
         
         this.state = {
-            userid: '',
-            feedback: '',
+            // userid: '',
+            // feedback: '',
+            id: this.props.match.params.id,
+            FeedbackTable : []
         }
         
-        this.handleUseridChange = this.handleUseridChange.bind(this);
-        this.handleFeedbackChange = this.handleFeedbackChange.bind(this);
-        this.DeleteFeedback = this.DeleteFeedback.bind(this);        
+        // this.handleUseridChange = this.handleUseridChange.bind(this);
+        // this.handleFeedbackChange = this.handleFeedbackChange.bind(this);
+        // this.DeleteFeedback = this.DeleteFeedback.bind(this);        
 
     }
 
-    componentDidMount(){
-        AdminServices.getFeedbackId(this.state.userid).then( (res) =>{
-            let FeedbackTable = res.data;
-            this.setState({
-                userid : FeedbackTable.userid,
-                feedback : FeedbackTable.feedback,
+    // componentDidMount(){
+    //     AdminServices.getFeedbackId(this.state.id).then( (res) =>{
+    //         this.setState({FeedbackTable : res.data})
+
+    //         // let FeedbackTable = res.data;
+    //         // this.setState({
+    //         //     userid : FeedbackTable.userid,
+    //         //     feedback : FeedbackTable.feedback,
                  
-            });
+    //         // });
+    //     });
+    // }
+    componentDidMount(){
+        AdminServices.getAllFeedback().then( (res) =>{
+            this.setState({FeedbackTable: res.data});
+
+            // let FeedbackTable = res.data;
+            // this.setState({
+            //     userid : FeedbackTable.userid,
+            //     feedback : FeedbackTable.feedback,
+                 
+            // });
         });
     }
+
 
 
     handleUseridChange = (event) => {
@@ -70,7 +88,7 @@ class GetFeedbackId extends Component {
 
 
     render() {
-        const {userid, feedback} = this.state
+//        const {userid, feedback} = this.state
 
         return (
 
@@ -96,18 +114,19 @@ class GetFeedbackId extends Component {
                 <thead>
                     <tr>
                     <th>Feedback</th>
-                    <th></th>
+                    <th>Area</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                    <td>
-                        <InputGroup className="mb-3">
-                            <FormControl placeholder="DisplayFeedbacks" value={feedback} onChange={this.handleFeedbackChange}/>
-                        </InputGroup>
-                    </td>
-                    <td href="#"><Button variant="danger" onClick={this.DeleteFeedback}><img src={del} alt="delete" /></Button></td>
-                    </tr>
+                    {
+                        this.state.FeedbackTable.map(
+                            FeedbackTable =>
+                            <tr key ={FeedbackTable.id}> 
+                                <td>{FeedbackTable.feedbackId} </td>
+                                <td>{FeedbackTable.feedbackDesc}</td>
+                            </tr>
+                        )
+                    }   
                 </tbody>
             </Table>
         </Container>

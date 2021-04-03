@@ -2,8 +2,8 @@ package com.example.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+//import javax.persistence.GeneratedValue;
+//import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -12,30 +12,31 @@ import javax.persistence.Table;
 
 public class FeedbackModel {
 	
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "feedback_id")
-	private long feedbackId;
+	@Column(name = "feedbackId")
+	private String feedbackId;
 
-	@Column(name = "feedbac_decs")
-	private String feedbacDesc;
+	@Column(name = "feedbackDesc")
+	private String feedbackDesc;
  
-	public long getFeedbackId() {
+	public String getFeedbackId() {
 		return feedbackId;
 	}
-	public void setFeedbackId(long feedbackId) {
+	public void setFeedbackId(String feedbackId) {
 		this.feedbackId = feedbackId;
 	}
-	public String getFeedbacDesc() {
-		return feedbacDesc;
+	public String getFeedbackDesc() {
+		return feedbackDesc;
 	}
-	public void setFeedbacDesc(String feedbacDesc) {
-		this.feedbacDesc = feedbacDesc;
+	public void setFeedbackDesc(String feedbackDesc) {
+		this.feedbackDesc = feedbackDesc;
 	}
-	public FeedbackModel(long feedbackId, String feedbacDesc) {
+	public FeedbackModel(String feedbackId, String feedbackDesc) {
 		super();
 		this.feedbackId = feedbackId;
-		this.feedbacDesc = feedbacDesc;
+		this.feedbackDesc = feedbackDesc;
 	}
 	public FeedbackModel() {
 		super();

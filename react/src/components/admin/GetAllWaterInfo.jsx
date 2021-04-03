@@ -10,8 +10,6 @@ import {Col} from 'react-bootstrap';
 import {Row} from 'react-bootstrap';
 import {Button} from 'react-bootstrap';
 import {Table} from 'react-bootstrap';
-import {InputGroup} from 'react-bootstrap';
-import {FormControl} from 'react-bootstrap';
 import {Form} from 'react-bootstrap';
 
 class GetAllWaterInfo extends Component {
@@ -20,15 +18,7 @@ class GetAllWaterInfo extends Component {
         super(props);
 
         this.state = {
-
             WaterTable : [],
-
-            // userid: this.props.match.params.id,
-            // mobileno : '',
-            // areaname: '',
-            // duration: '',
-            // city: ''
-                        
         }
 
     }
@@ -37,91 +27,81 @@ class GetAllWaterInfo extends Component {
     componentDidMount(){
         AdminServices.getAllWaterInfo().then( (res) =>{
             this.setState({ WaterTable: res.data});
-            // let WaterTable = res.data;
-            // this.setState({
-            
-            //     userid : WaterTable.userid, 
-            //     mobileno : WaterTable.mobileno,
-            //     areaname : WaterTable.areaname,
-            //     duration : WaterTable.duration,
-            //     city : WaterTable.city,
-            // });
         });
     }
 
-    handleUserIdChange = (event) => {
-        this.setState({
-            userid: event.target.value
-        })
-    }
+//     handleUserIdChange = (event) => {
+//         this.setState({
+//             userid: event.target.value
+//         })
+//     }
 
-    handleAreanameChange = (event) => {
-        this.setState({
-            areaname: event.target.value
-        })
-    }
+//     handleAreanameChange = (event) => {
+//         this.setState({
+//             areaname: event.target.value
+//         })
+//     }
 
-    handleDurationChange = (event) => {
-        this.setState({
-            duration: event.target.value
-        })
-    }
+//     handleDurationChange = (event) => {
+//         this.setState({
+//             duration: event.target.value
+//         })
+//     }
 
-    handleCityChange = (event) => {
-        this.setState({
-            city: event.target.value
-        })
-    }
+//     handleCityChange = (event) => {
+//         this.setState({
+//             city: event.target.value
+//         })
+//     }
 
-    handleMobileChange = (event) => {
-        this.setState({
-            mobileno: event.target.value
-        })
-    }
+//     handleMobileChange = (event) => {
+//         this.setState({
+//             mobileno: event.target.value
+//         })
+//     }
 
 
-    EditWaterInfo = (e) => {
-        e.preventDefault();
-        let WaterTable = { userid:this.state.userid, areaname:this.state.areaname, duration: this.state.duration, city: this.state.city, mobileno:this.state.mobileno};
-        console.log('WaterTable => ' + JSON.stringify(WaterTable));
+//     EditWaterInfo = (e) => {
+//         e.preventDefault();
+//         let WaterTable = { userid:this.state.userid, areaname:this.state.areaname, duration: this.state.duration, city: this.state.city, mobileno:this.state.mobileno};
+//         console.log('WaterTable => ' + JSON.stringify(WaterTable));
 
         
-        AdminServices.updateWaterInfo(WaterTable).then(res =>{
-//          path(/employees) => same page     
-//          this.props.history.push('/employees');
-        });
+//         AdminServices.updateWaterInfo(WaterTable).then(res =>{
+// //          path(/employees) => same page     
+// //          this.props.history.push('/employees');
+//         });
 
-    }
+//     }
 
-    DeleteWaterInfo = (e) => {
-        e.preventDefault();
-        let WaterTable = { userid:this.state.userid,areaname:this.state.areaname, duration: this.state.duration, city: this.state.city, mobileno:this.state.mobileno};
-        console.log('WaterTable => ' + JSON.stringify(WaterTable));
+//     DeleteWaterInfo = (e) => {
+//         e.preventDefault();
+//         let WaterTable = { userid:this.state.userid,areaname:this.state.areaname, duration: this.state.duration, city: this.state.city, mobileno:this.state.mobileno};
+//         console.log('WaterTable => ' + JSON.stringify(WaterTable));
 
         
-        AdminServices.deleteWaterInfo(WaterTable).then(res =>{
-//          path(/employees) => same page     
-//          this.props.history.push('/employees');
-        });
+//         AdminServices.deleteWaterInfo(WaterTable).then(res =>{
+// //          path(/employees) => same page     
+// //          this.props.history.push('/employees');
+//         });
 
-    }
+//     }
 
     
-    UpdateWaterInfo = (e) => {
-        e.preventDefault();
-        let WaterTable = {mobileno:this.state.mobileno, userid:this.state.userid,areaname:this.state.areaname, duration: this.state.duration, city: this.state.city};
-        console.log('WaterTable => ' + JSON.stringify(WaterTable));
+//     UpdateWaterInfo = (e) => {
+//         e.preventDefault();
+//         let WaterTable = {mobileno:this.state.mobileno, userid:this.state.userid,areaname:this.state.areaname, duration: this.state.duration, city: this.state.city};
+//         console.log('WaterTable => ' + JSON.stringify(WaterTable));
 
         
-        AdminServices.updateWaterInfo(WaterTable).then(res =>{
-//          path(/employees) => same page     
-//          this.props.history.push('/employees');
-        });
-    }
+//         AdminServices.updateWaterInfo(WaterTable).then(res =>{
+// //          path(/employees) => same page     
+// //          this.props.history.push('/employees');
+//         });
+//     }
 
     render() {
         return (
-
             <Container>
                 <Row >
                     <Col ><Button variant="primary" block><h3>Update Water Info</h3></Button></Col>
@@ -153,7 +133,6 @@ class GetAllWaterInfo extends Component {
                                     <td>{WaterTable.city}</td>
                                     <td href="#"><Button variant="danger" onClick={this.DeleteWaterInfo}><img src={del} alt="delete" /></Button></td>
                                     <td href="#"><Button variant="warning" onClick={this.EditWaterInfo}><img src={edit} alt="edit" /></Button></td>
-                        
                                 </tr> 
                             )
                         }
@@ -167,73 +146,6 @@ class GetAllWaterInfo extends Component {
                 </Form.Group>
                 </Form>
             </Container>
-
-            // <div class="container">
-            //     <div class="row">
-            //         <div class="col-sm-4 ">
-            //             <h1>Update Water Info </h1>
-            //         </div>
-            //         <div class="col-sm-2 ">
-            //             <img src={tap} alt="tap" />
-            //         </div>
-            //         <div class="col-sm-4 ">
-            //         </div>
-            //         <div class="col-sm-1 ">
-            //             <h3>Search</h3>
-            //         </div>
-            //         <div class="col-sm-1 ">
-            //             <img src={search} alt="search" />
-            //         </div>
-
-            //     </div>
-            //     <br></br>
-            //     <div class="row">
-            //         <div class="col-sm-2 bg-success">
-            //         <h3>Mobileno</h3>
-            //         </div>
-            //         <div class="col-sm-2 bg-warning">
-            //         <h3>UserID</h3>
-            //         </div>
-            //         <div class="col-sm-2 bg-success">
-            //         <h3>Areaname</h3>
-            //         </div>
-            //         <div class="col-sm-2 bg-warning">
-            //         <h3>Duration</h3>
-            //         </div>
-            //         <div class="col-sm-2 bg-success">
-            //         <h3>City</h3>
-            //         </div>
-            //         <div class="col-sm-1 bg-warning">
-            //         </div>
-            //         <div class="col-sm-1 bg-success">
-            //         </div>
-            //     </div>
-            //     <br></br>
-            //     <div class="row">
-            //         <div class="col-sm-2 ">
-            //         <input type="text" className="full"placeholder="Display" />
-            //         </div>
-            //         <div class="col-sm-2 ">
-            //         <input type="text" className="full"placeholder="Display" />
-            //         </div>
-            //         <div class="col-sm-2 ">
-            //         <input type="text" className="full"placeholder="Display" />
-            //         </div>
-            //         <div class="col-sm-2 ">
-            //         <input type="text" className="full"placeholder="Display" />
-            //         </div>
-            //         <div class="col-sm-2 ">
-            //         <input type="text" className="full"placeholder="Display" />
-            //         </div>
-            //         <div class="col-sm-1 ">
-            //            <img src={del} alt="delete" />
-            //         </div>
-            //         <div class="col-sm-1 ">
-            //             <img src={edit} alt="edit" />
-            //         </div>
-            //     </div>
-            // </div>
-
         );
     }
 }

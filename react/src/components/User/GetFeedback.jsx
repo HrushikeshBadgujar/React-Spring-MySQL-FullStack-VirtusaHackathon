@@ -19,22 +19,24 @@ class GetFeedback extends Component {
 
 
         this.state = {
-            userid: '',
-            feedback: '',
+            // userid: '',
+            // feedback: '',
+            FeedbackTable:[],
         }
 
-        this.handleUseridChange = this.handleUseridChange.bind(this);
-        this.handleFeedbackChange = this.handleFeedbackChange.bind(this);
+        // this.handleUseridChange = this.handleUseridChange.bind(this);
+        // this.handleFeedbackChange = this.handleFeedbackChange.bind(this);
     }
 
     componentDidMount(){
         UserServices.getFeedback(this.state.userid).then( (res) =>{
-            let FeedbackTable = res.data;
-            this.setState({
-                userid : FeedbackTable.userid,
-                feedback : FeedbackTable.feedback,
+            this.setState({FeedbackTable: res.data});
+            // let FeedbackTable = res.data;
+            // this.setState({
+            //     userid : FeedbackTable.userid,
+            //     feedback : FeedbackTable.feedback,
                  
-            });
+            // });
         });
     }
 

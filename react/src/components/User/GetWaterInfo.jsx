@@ -132,8 +132,8 @@ class GetWaterInfo extends Component {
             <Table >
                     <thead >
                         <tr>
-                            <th>Area Lists</th>
                         </tr>
+                            <th>Area Lists</th>
                     </thead>
                     <tbody>
                         <tr>

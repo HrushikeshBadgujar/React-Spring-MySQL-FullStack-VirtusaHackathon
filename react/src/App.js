@@ -28,7 +28,7 @@ function App() {
     <Route exact path="/login" component={Login} />
    {/*  */}
     <Route exact path="/signup" component={Signup} />
-    <Route exact path="/getWaterInfo" component={GetWaterInfo} />
+    <Route exact path="/getWaterInfo/:id" component={GetWaterInfo} />
     <Route exact path="/addInfo" component={AddWaterInfo} />
     <Route exact path="/addFeedback" component={AddFeedback} />
     <Route exact path="/getFeedback" component={GetFeedback} />
@@ -38,7 +38,7 @@ function App() {
     
     <Route exact path="/admin" component={GetAllWaterInfo} />
     {/*  */}
-    <Route exact path="/admin/GetFeedbackId" component={GetFeedbackId} />
+    <Route exact path="/admin/feedback/:id" component={GetFeedbackId} />
     <Route exact path="/admin/feedback" component={GetAllFeedback} />
 
 

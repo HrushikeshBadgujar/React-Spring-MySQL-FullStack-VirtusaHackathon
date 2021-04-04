@@ -13,14 +13,14 @@ axios.interceptors.request.use( config => {
   return config;
 });
 
-class BackendService {
-  async getUserBoard() {
-    return await axios.get("/api/test/user");
-  }
+// class BackendService {
+//   async getUserBoard() {
+//     return await axios.get("/api/test/user");
+//   }
 
-  async getAdminBoard() {
-    return await axios.get("/api/test/admin");
-  }
-}
+//   async getAdminBoard() {
+//     return await axios.get("/api/test/admin");
+//   }
+// }
 
 export default new BackendService();

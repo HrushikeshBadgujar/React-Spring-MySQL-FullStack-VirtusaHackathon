@@ -12,6 +12,7 @@ import com.example.repository.WaterRepo;
 import org.springframework.http.HttpHeaders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +33,7 @@ public class WaterController {
 
     // get all water info
     @GetMapping("/admin")
+    @PreAuthorize("hasRole('USER')")
     public List <WaterModel> getWaterInfo(){
         return waterRepo.findAll();
     }
@@ -70,17 +72,18 @@ public class WaterController {
         return waterRepo.save(waterModel); 
     }
 
-    // //delete water info
-    // @DeleteMapping("/admin/{id}")
-    // public ResponseEntity<Map<String,Boolean>> waterInfoDelete(@PathVariable Long id){
-    //     WaterModel waterModel = waterRepo.findById(id).orElseThrow(() -> 
-    //         new ResourceNotFoundException("waterInfo not exist for this userid"+ id));
+    //delete water info
+    @DeleteMapping("/admin/{id}")
+    @PreAuthorize("hasRole('USER')")
+    public ResponseEntity<Map<String,Boolean>> waterInfoDelete(@PathVariable Long id){
+        WaterModel waterModel = waterRepo.findById(id).orElseThrow(() -> 
+            new ResourceNotFoundException("waterInfo not exist for this userid"+ id));
 
-    //     waterRepo.delete(waterModel);
-    //     Map<String,Boolean> response = new HashMap<>();
-    //     response.put("deleted", Boolean.TRUE);
-    //     return ResponseEntity.ok(response);
-    // }
+        waterRepo.delete(waterModel);
+        Map<String,Boolean> response = new HashMap<>();
+        response.put("deleted", Boolean.TRUE);
+        return ResponseEntity.ok(response);
+    }
 
 
     

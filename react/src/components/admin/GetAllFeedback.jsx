@@ -51,7 +51,7 @@ class GetAllFeedback extends Component {
                         {
                             this.state.FeedbackTable.map(
                                 FeedbackTable =>
-                                <tr key = {FeedbackTable.id}> 
+                                <tr key = {FeedbackTable.feedbackId}> 
                                     <td>{FeedbackTable.feedbackId}</td>
                                     <td>{FeedbackTable.feedbackDesc}</td>
                                 </tr>

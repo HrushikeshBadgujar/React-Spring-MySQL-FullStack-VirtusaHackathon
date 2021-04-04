@@ -18,7 +18,7 @@ class GetAllWaterInfo extends Component {
         super(props);
 
         this.state = {
-            WaterTable : [],
+            WaterTable : []
         }
 
     }
@@ -76,13 +76,13 @@ class GetAllWaterInfo extends Component {
 
     DeleteWaterInfo = (e) => {
         e.preventDefault();
-        let WaterTable = { userid:this.state.userid,areaname:this.state.areaname, duration: this.state.duration, city: this.state.city, mobileno:this.state.mobileno};
-        console.log('WaterTable => ' + JSON.stringify(WaterTable));
+        // let WaterTable = { userid:this.state.userid,areaname:this.state.areaname, duration: this.state.duration, city: this.state.city, mobileno:this.state.mobileno};
+        // console.log('WaterTable => ' + JSON.stringify(WaterTable));
 
         
-        AdminServices.deleteWaterInfo(WaterTable).then(res =>{
+        AdminServices.deleteWaterInfo(this.state.userid).then(res =>{
 //          path(/employees) => same page     
-//          this.props.history.push('/employees');
+            this.props.history.push('/admin');
         });
 
     }

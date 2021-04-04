@@ -2,14 +2,27 @@ import axios from 'axios';
 
 const EMPLOYEE_API_BASE_URL = "http://localhost:8081/api/v1/admin";
 
+// Add a request interceptor
+axios.interceptors.request.use( config => {
+    const user = JSON.parse(localStorage.getItem('user'));
+  
+    if(user && user.accessToken){
+      const token = 'Bearer ' + user.accessToken;
+      config.headers.Authorization =  token;
+      
+    }
+  
+    return config;
+  });
+
 class AdminService {
 
-    getAllWaterInfo(){
-        return axios.get(EMPLOYEE_API_BASE_URL);
+    async getAllWaterInfo(){
+        return await axios.get(EMPLOYEE_API_BASE_URL);
     }
 
-    deleteWaterInfo(userId){
-        return axios.delete(EMPLOYEE_API_BASE_URL + '/' + userId);
+    deleteWaterInfo(userid){
+        return axios.delete(EMPLOYEE_API_BASE_URL + '/' + userid);
     }
 
     updateWaterInfo(WaterTable, userId){

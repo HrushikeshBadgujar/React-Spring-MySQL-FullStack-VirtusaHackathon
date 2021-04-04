@@ -73,13 +73,13 @@ class AddWaterInfo extends Component {
 
     submitWaterInfo = (e) => {
         e.preventDefault();
-        let WaterTable = {userid:this.userid,location:this.state.location, duration: this.state.duration, city: this.state.city, waterdesc: this.state.waterdesc, waterpres:this.state.waterpres};
+        let WaterTable = { userid:this.state.userid,location:this.state.location, duration: this.state.duration, city: this.state.city, waterdesc: this.state.waterdesc, waterpres:this.state.waterpres};
         console.log('WaterTable => ' + JSON.stringify(WaterTable));
 
         
         UserServices.addWaterInfo(WaterTable).then(res =>{
 //          path(/employees) => same page     
-          this.props.history.push('/admin');
+          //this.props.history.push('/admin');
         });
 
         // // step 5
@@ -131,7 +131,7 @@ class AddWaterInfo extends Component {
                     Duration
                     </Form.Label>
                     <Col sm={10}>
-                    <Form.Control type="time" placeholder="Duration" value={duration} onChange={this.handleDurationChange}/>
+                    <Form.Control type="text" placeholder="Duration" value={duration} onChange={this.handleDurationChange}/>
                     </Col>
                 </Form.Group>
 

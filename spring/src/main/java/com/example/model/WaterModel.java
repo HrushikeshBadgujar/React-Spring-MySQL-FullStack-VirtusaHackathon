@@ -31,7 +31,7 @@ public class WaterModel {
 	// private String feedback;
 
 	@Column(name = "duration")
-	private Time duration;
+	private String duration;
 
 	public WaterModel() {
 	}
@@ -85,16 +85,16 @@ public class WaterModel {
 	// }
 
 	
-	public Time getDuration() {
+	public String getDuration() {
 		return duration;
 	}
 
-	public void setDuration(Time duration) {
+	public void setDuration(String duration) {
 		this.duration = duration;
 	}
 
 	public WaterModel(String waterpres, String waterdesc, String city, String location, String userid,
-			Time duration) {
+			String duration) {
 		this.waterpres = waterpres;
 		this.waterdesc = waterdesc;
 		this.city = city;

@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin(origins = "http://localhost:8080")     //change it later
+@CrossOrigin(origins = "http://localhost:8082")     //change it later
 @RestController
 @RequestMapping("/api/v1/")
 public class WaterController {
@@ -36,7 +36,7 @@ public class WaterController {
     }
 
     // get water info by id
-    @GetMapping("getWaterInfo/{id}")
+    @GetMapping("/getWaterInfo/{id}")
     public ResponseEntity< WaterModel> getWaterInfoById(@PathVariable String id){
         WaterModel waterModel = waterRepo.findById(id).orElseThrow(() -> 
             new ResourceNotFoundException("waterInfo not exist for this id"+ id));
@@ -65,7 +65,6 @@ public class WaterController {
     //adds new water Info
     @PostMapping("/addInfo")
     public WaterModel addWaterInfo(@RequestBody WaterModel waterModel){
-      System.out.println(waterModel.toString());
         return waterRepo.save(waterModel); 
     }
 

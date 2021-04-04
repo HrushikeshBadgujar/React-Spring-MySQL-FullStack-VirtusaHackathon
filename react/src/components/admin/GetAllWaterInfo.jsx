@@ -30,75 +30,75 @@ class GetAllWaterInfo extends Component {
         });
     }
 
-//     handleUserIdChange = (event) => {
-//         this.setState({
-//             userid: event.target.value
-//         })
-//     }
+    handleUserIdChange = (event) => {
+        this.setState({
+            userid: event.target.value
+        })
+    }
 
-//     handleAreanameChange = (event) => {
-//         this.setState({
-//             areaname: event.target.value
-//         })
-//     }
+    handleAreanameChange = (event) => {
+        this.setState({
+            areaname: event.target.value
+        })
+    }
 
-//     handleDurationChange = (event) => {
-//         this.setState({
-//             duration: event.target.value
-//         })
-//     }
+    handleDurationChange = (event) => {
+        this.setState({
+            duration: event.target.value
+        })
+    }
 
-//     handleCityChange = (event) => {
-//         this.setState({
-//             city: event.target.value
-//         })
-//     }
+    handleCityChange = (event) => {
+        this.setState({
+            city: event.target.value
+        })
+    }
 
-//     handleMobileChange = (event) => {
-//         this.setState({
-//             mobileno: event.target.value
-//         })
-//     }
+    handleMobileChange = (event) => {
+        this.setState({
+            mobileno: event.target.value
+        })
+    }
 
 
-//     EditWaterInfo = (e) => {
-//         e.preventDefault();
-//         let WaterTable = { userid:this.state.userid, areaname:this.state.areaname, duration: this.state.duration, city: this.state.city, mobileno:this.state.mobileno};
-//         console.log('WaterTable => ' + JSON.stringify(WaterTable));
-
-        
-//         AdminServices.updateWaterInfo(WaterTable).then(res =>{
-// //          path(/employees) => same page     
-// //          this.props.history.push('/employees');
-//         });
-
-//     }
-
-//     DeleteWaterInfo = (e) => {
-//         e.preventDefault();
-//         let WaterTable = { userid:this.state.userid,areaname:this.state.areaname, duration: this.state.duration, city: this.state.city, mobileno:this.state.mobileno};
-//         console.log('WaterTable => ' + JSON.stringify(WaterTable));
+    EditWaterInfo = (e) => {
+        e.preventDefault();
+        let WaterTable = { userid:this.state.userid, areaname:this.state.areaname, duration: this.state.duration, city: this.state.city, mobileno:this.state.mobileno};
+        console.log('WaterTable => ' + JSON.stringify(WaterTable));
 
         
-//         AdminServices.deleteWaterInfo(WaterTable).then(res =>{
-// //          path(/employees) => same page     
-// //          this.props.history.push('/employees');
-//         });
+        AdminServices.updateWaterInfo(WaterTable).then(res =>{
+//          path(/employees) => same page     
+//          this.props.history.push('/employees');
+        });
 
-//     }
+    }
+
+    DeleteWaterInfo = (e) => {
+        e.preventDefault();
+        let WaterTable = { userid:this.state.userid,areaname:this.state.areaname, duration: this.state.duration, city: this.state.city, mobileno:this.state.mobileno};
+        console.log('WaterTable => ' + JSON.stringify(WaterTable));
+
+        
+        AdminServices.deleteWaterInfo(WaterTable).then(res =>{
+//          path(/employees) => same page     
+//          this.props.history.push('/employees');
+        });
+
+    }
 
     
-//     UpdateWaterInfo = (e) => {
-//         e.preventDefault();
-//         let WaterTable = {mobileno:this.state.mobileno, userid:this.state.userid,areaname:this.state.areaname, duration: this.state.duration, city: this.state.city};
-//         console.log('WaterTable => ' + JSON.stringify(WaterTable));
+    UpdateWaterInfo = (e) => {
+        e.preventDefault();
+        let WaterTable = {mobileno:this.state.mobileno, userid:this.state.userid,areaname:this.state.areaname, duration: this.state.duration, city: this.state.city};
+        console.log('WaterTable => ' + JSON.stringify(WaterTable));
 
         
-//         AdminServices.updateWaterInfo(WaterTable).then(res =>{
-// //          path(/employees) => same page     
-// //          this.props.history.push('/employees');
-//         });
-//     }
+        AdminServices.updateWaterInfo(WaterTable).then(res =>{
+//          path(/employees) => same page     
+//          this.props.history.push('/employees');
+        });
+    }
 
     render() {
         return (
@@ -125,7 +125,7 @@ class GetAllWaterInfo extends Component {
                         {
                             this.state.WaterTable.map(
                                 WaterTable =>
-                                <tr key = {WaterTable.id}>
+                                <tr key = {WaterTable.userid}>
                                     <td>{WaterTable.mobileno}</td>
                                     <td>{WaterTable.userid}</td>
                                     <td>{WaterTable.location}</td>

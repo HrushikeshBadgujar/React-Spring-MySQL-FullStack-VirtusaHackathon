@@ -40,6 +40,7 @@ class Register extends Component {
         message: "",
         successful: false,
         validForm: true,
+
         errors: {
         firstname: '',
         lastname: '',
@@ -156,7 +157,7 @@ class Register extends Component {
             break;
         case 'mobileno': 
             errors.mobileno = 
-              value.length < 10
+              value.length < 11
                 ? ''
                 : 'Mobile is not valid!';
             break;
@@ -185,8 +186,8 @@ class Register extends Component {
             this.state.lastname,
             this.state.username,
             this.state.email,
-            this.state.mobileno,
-            this.state.password
+            this.state.password,
+            this.state.mobileno
           ).then(
             response => {
               this.setState({

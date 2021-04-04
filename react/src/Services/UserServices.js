@@ -26,7 +26,8 @@ class UserService {
     }
 
     addFeedback(FeedbackTable){
-        return axios.post(EMPLOYEE_API_BASE_URL+"/addFeedback", FeedbackTable);
+        console.log('FeedbackTable => ' + JSON.stringify(FeedbackTable));
+        return axios.post(EMPLOYEE_API_BASE_URL +"/addFeedback", FeedbackTable);
     }
 
     getFeedback(UserTable){

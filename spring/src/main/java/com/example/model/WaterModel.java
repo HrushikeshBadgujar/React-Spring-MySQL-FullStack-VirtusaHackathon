@@ -1,6 +1,6 @@
 package com.example.model;
 
-import java.sql.Time;
+//import java.sql.Time;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,13 +25,13 @@ public class WaterModel {
 
 	@Id
     @Column(name = "userid")
-	public String userid;
+	public long userid;
 
 	// @Column(name = "feedback")
 	// private String feedback;
 
 	@Column(name = "duration")
-	private Time duration;
+	private long duration;
 
 	public WaterModel() {
 	}
@@ -68,11 +68,11 @@ public class WaterModel {
 		this.location = location;
 	}
 
-	public String getUserid() {
+	public long getUserid() {
 		return userid;
 	}
 
-	public void setUserid(String userid) {
+	public void setUserid(Long userid) {
 		this.userid = userid;
 	}
 
@@ -85,16 +85,16 @@ public class WaterModel {
 	// }
 
 	
-	public Time getDuration() {
+	public long getDuration() {
 		return duration;
 	}
 
-	public void setDuration(Time duration) {
+	public void setDuration(Long duration) {
 		this.duration = duration;
 	}
 
-	public WaterModel(String waterpres, String waterdesc, String city, String location, String userid,
-			Time duration) {
+	public WaterModel(String waterpres, String waterdesc, String city, String location, Long userid,
+			Long duration) {
 		this.waterpres = waterpres;
 		this.waterdesc = waterdesc;
 		this.city = city;

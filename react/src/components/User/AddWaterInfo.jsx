@@ -21,11 +21,9 @@ class AddWaterInfo extends Component {
             waterdesc: '',
             waterpres: '',
             userid : ''
-
         }
 
         this.handleUserIdChange = this.handleUserIdChange.bind(this);
-        
         this.handleLocationChange = this.handleLocationChange.bind(this);
         this.handleDurationChange = this.handleDurationChange.bind(this);
         this.handleCityChange = this.handleCityChange.bind(this);
@@ -73,137 +71,96 @@ class AddWaterInfo extends Component {
 
     submitWaterInfo = (e) => {
         e.preventDefault();
-        let WaterTable = {userid:this.userid,location:this.state.location, duration: this.state.duration, city: this.state.city, waterdesc: this.state.waterdesc, waterpres:this.state.waterpres};
+        let WaterTable = {userid:this.state.userid,location:this.state.location, duration: this.state.duration, city: this.state.city, waterdesc: this.state.waterdesc, waterpres:this.state.waterpres};
         console.log('WaterTable => ' + JSON.stringify(WaterTable));
 
-        
-        UserServices.addWaterInfo(WaterTable).then(res =>{
-//          path(/employees) => same page     
-          this.props.history.push('/admin');
+        UserServices.addWaterInfo(WaterTable).then(res =>{   
+            this.props.history.push('/admin');
         });
-
-        // // step 5
-        // if(this.state.id === '_add'){
-        //     EmployeeService.createEmployee(employee).then(res =>{
-        //         this.props.history.push('/employees');
-        //     });
-        // }
-        // else{
-        //     EmployeeService.updateEmployee(employee, this.state.id).then( res => {
-        //         this.props.history.push('/employees');
-        //     });
-        // }
     }
 
     render() {
         const { location, userid, duration, city, waterdesc, waterpres } = this.state
+ 
         return (
-        
             <Container>
-            <Row >
-                <Col ><Button variant="primary" block><h3>Add Water Info</h3></Button></Col>
-                <Col xs = {4}></Col>
-                <Col></Col>
-            </Row>
-            <br></br>
-            
-            <Form>
-                <Form.Group as={Row} controlId="formHorizontalUserId">
-                    <Form.Label column sm={2} >
-                    UserID
-                    </Form.Label>
-                    <Col sm={10}>
-                    <Form.Control type="text" placeholder="UserID" value={userid} onChange={this.handleUserIdChange}/>
-                    </Col>
-                </Form.Group>
-
-                <Form.Group as={Row} controlId="formHorizontalAreaname">
-                    <Form.Label column sm={2} >
-                    Location
-                    </Form.Label>
-                    <Col sm={10}>
-                    <Form.Control type="text" placeholder="Location" value={location} onChange={this.handleLocationChange}/>
-                    </Col>
-                </Form.Group>
-
-                <Form.Group as={Row} controlId="formHorizontalDuration">
-                    <Form.Label column sm={2}>
-                    Duration
-                    </Form.Label>
-                    <Col sm={10}>
-                    <Form.Control type="time" placeholder="Duration" value={duration} onChange={this.handleDurationChange}/>
-                    </Col>
-                </Form.Group>
-
-                <Form.Group as={Row} controlId="formHorizontalCity">
-                    <Form.Label column sm={2}>
-                    City
-                    </Form.Label>
-                    <Col sm={10}>
-                    <Form.Control type="city" placeholder="City" value={city} onChange={this.handleCityChange} />
-                    </Col>
-                </Form.Group>
-
+ 
+                <Row >
+                    <Col ><Button variant="primary" block><h3>Add Water Info</h3></Button></Col>
+                    <Col xs = {4}></Col>
+                    <Col></Col>
+                </Row>
+ 
+                <br></br>
                 
-                <Form.Group as={Row} controlId="formHorizontalWaterDesc">
-                    <Form.Label column sm={2}>
-                    WaterDesc
-                    </Form.Label>
-                    <Col sm={10}>
-                    <Form.Control type="waterdesc" placeholder="WaterDesc" value={waterdesc} onChange={this.handleWaterDescChange} />
-                    </Col>
-                </Form.Group>
+                <Form >
+                    <Form.Group as={Row} controlId="formHorizontalUserId">
+                        <Form.Label column sm={2} >
+                            UserID
+                        </Form.Label>
+                        <Col sm={10}>
+                        <Form.Control type="number" placeholder="UserID" value={userid} onChange={this.handleUserIdChange}/>
+                        </Col>
+                    </Form.Group>
 
-                
-                <Form.Group as={Row} controlId="formHorizontalWaterPres">
-                    <Form.Label column sm={2}>
-                    WaterPres
-                    </Form.Label>
-                    <Col sm={10}>
-                    <Form.Control type="waterpres" placeholder="WaterPres" value={waterpres} onChange={this.handleWaterPresChange} />
-                    </Col>
-                </Form.Group>
+                    <Form.Group as={Row} controlId="formHorizontalAreaname">
+                        <Form.Label column sm={2} >
+                        Location
+                        </Form.Label>
+                        <Col sm={10}>
+                        <Form.Control type="text" placeholder="Location" value={location} onChange={this.handleLocationChange}/>
+                        </Col>
+                    </Form.Group>
 
-                <Form.Group as={Row}>
-                    <Col sm={{ span: 10, offset: 2 }}>
+                    <Form.Group as={Row} controlId="formHorizontalDuration">
+                        <Form.Label column sm={2}>
+                        Duration
+                        </Form.Label>
+                        <Col sm={10}>
+                        <Form.Control type="number" placeholder="Duration" value={duration} onChange={this.handleDurationChange}/>
+                        </Col>
+                    </Form.Group>
 
-                    <Button className="btn btn-success" onClick={this.submitWaterInfo} type="submit" >Submit</Button>
-                    </Col>
-                </Form.Group>
-            </Form>
+                    <Form.Group as={Row} controlId="formHorizontalCity">
+                        <Form.Label column sm={2}>
+                        City
+                        </Form.Label>
+                        <Col sm={10}>
+                        <Form.Control type="text" placeholder="City" value={city} onChange={this.handleCityChange} />
+                        </Col>
+                    </Form.Group>
 
-         </Container>
+                    
+                    <Form.Group as={Row} controlId="formHorizontalWaterDesc">
+                        <Form.Label column sm={2}>
+                        WaterDesc
+                        </Form.Label>
+                        <Col sm={10}>
+                        <Form.Control type="text" placeholder="WaterDesc" value={waterdesc} onChange={this.handleWaterDescChange} />
+                        </Col>
+                    </Form.Group>
 
-            //     <div className="container bg-warning"> 
-        //     <div className="row"> 
-        //         <div className="col-sm-8 bg-success">
-        //             <div className="row"> 
-        //                 <div className="col-sm-2"></div>
-        //                 <div className="col-sm-1"><img src={addman} alt="add" /></div>
-        //                 <div className="col-sm-4"><h2> WaterInfo </h2></div>
-        //                 <div className="col-sm-2"><img src={tap} alt="tap" /></div>                            
-        //             </div>
-        //             <div className="form-group">
-        //                     <label >Areaname : </label>
-        //                     <input type="text" className="form-control" value={areaname} onChange={this.handleAreanameChange} />
-        //             </div>
+                    
+                    <Form.Group as={Row} controlId="formHorizontalWaterPres">
+                        <Form.Label column sm={2}>
+                        WaterPres
+                        </Form.Label>
+                        <Col sm={10}>
+                        <Form.Control type="text" placeholder="WaterPres" value={waterpres} onChange={this.handleWaterPresChange} />
+                        </Col>
+                    </Form.Group>
 
-        //             <div className="form-group">
-        //                     <label >Duration : </label>
-        //                     <input type="time" className="form-control" value={duration} onChange={this.handleDurationChange} />
-        //             </div>
-        //             <div className="form-group">
-        //                     <label> City :    </label>
-        //                     <input type="text" className="form-control" value={city} onChange={this.handleCityChange} />
-        //             </div>
+                    <Form.Group as={Row}>
+                        <Col sm={{ span: 10, offset: 2 }}>
+                        <Button className="btn btn-success" onClick={this.submitWaterInfo} type="submit" >Submit</Button>
+                        </Col>
+                    </Form.Group>
 
+                </Form>
 
-        //         </div>
-        //         <div className="col-sm-4"> 
+            </Container>
 
-        //         </div>
-        //     </div> 
-        // </div>        
+  
         );
     }
 }

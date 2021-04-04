@@ -3,6 +3,7 @@ package com.example.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+//import java.util.logging.LogManager;
 
 import com.example.exception.ResourceNotFoundException;
 import com.example.model.WaterModel;
@@ -35,51 +36,51 @@ public class WaterController {
         return waterRepo.findAll();
     }
 
-    // get water info by id
-    @GetMapping("getWaterInfo/{id}")
-    public ResponseEntity< WaterModel> getWaterInfoById(@PathVariable String id){
-        WaterModel waterModel = waterRepo.findById(id).orElseThrow(() -> 
-            new ResourceNotFoundException("waterInfo not exist for this id"+ id));
+    // // get water info by id
+    // @GetMapping("getWaterInfo/{id}")
+    // public ResponseEntity< WaterModel> getWaterInfoById(@PathVariable Long id){
+    //     WaterModel waterModel = waterRepo.findById(id).orElseThrow(() -> 
+    //         new ResourceNotFoundException("waterInfo not exist for this id"+ id));
 
-        return ResponseEntity.ok(waterModel);
+    //     return ResponseEntity.ok(waterModel);
 
-    }
+    // }
 
-    // update waterInfo
-    @PutMapping("/admin/{id}")
-    public ResponseEntity <WaterModel> waterInfoUpdate(@PathVariable String id, @RequestBody WaterModel waterModelDetails){
+    // // update waterInfo
+    // @PutMapping("/admin/{id}")
+    // public ResponseEntity <WaterModel> waterInfoUpdate(@PathVariable Long id, @RequestBody WaterModel waterModelDetails){
 
-        WaterModel waterModel = waterRepo.findById(id).orElseThrow(() -> 
-            new ResourceNotFoundException("waterInfo not exist for this id"+ id));
+    //     WaterModel waterModel = waterRepo.findById(id).orElseThrow(() -> 
+    //         new ResourceNotFoundException("waterInfo not exist for this id"+ id));
 
-        waterModel.setCity(waterModelDetails.getCity());
-        waterModel.setLocation(waterModelDetails.getLocation());
-        waterModel.setWaterDesc(waterModelDetails.getWaterDesc());
-        waterModel.setWaterPres(waterModelDetails.getWaterPres());
+    //     waterModel.setCity(waterModelDetails.getCity());
+    //     waterModel.setLocation(waterModelDetails.getLocation());
+    //     waterModel.setWaterDesc(waterModelDetails.getWaterDesc());
+    //     waterModel.setWaterPres(waterModelDetails.getWaterPres());
         
 
-        WaterModel updatedWaterModel = waterRepo.save(waterModel);
-        return ResponseEntity.ok(updatedWaterModel);
-    }
+    //     WaterModel updatedWaterModel = waterRepo.save(waterModel);
+    //     return ResponseEntity.ok(updatedWaterModel);
+    // }
 
     //adds new water Info
     @PostMapping("/addInfo")
     public WaterModel addWaterInfo(@RequestBody WaterModel waterModel){
-      System.out.println(waterModel.toString());
+//      System.out.println(waterModel.toString());
         return waterRepo.save(waterModel); 
     }
 
-    //delete water info
-    @DeleteMapping("/admin/{id}")
-    public ResponseEntity<Map<String,Boolean>> waterInfoDelete(@PathVariable String id){
-        WaterModel waterModel = waterRepo.findById(id).orElseThrow(() -> 
-            new ResourceNotFoundException("waterInfo not exist for this userid"+ id));
+    // //delete water info
+    // @DeleteMapping("/admin/{id}")
+    // public ResponseEntity<Map<String,Boolean>> waterInfoDelete(@PathVariable Long id){
+    //     WaterModel waterModel = waterRepo.findById(id).orElseThrow(() -> 
+    //         new ResourceNotFoundException("waterInfo not exist for this userid"+ id));
 
-        waterRepo.delete(waterModel);
-        Map<String,Boolean> response = new HashMap<>();
-        response.put("deleted", Boolean.TRUE);
-        return ResponseEntity.ok(response);
-    }
+    //     waterRepo.delete(waterModel);
+    //     Map<String,Boolean> response = new HashMap<>();
+    //     response.put("deleted", Boolean.TRUE);
+    //     return ResponseEntity.ok(response);
+    // }
 
 
     

@@ -29,7 +29,7 @@ import com.example.model.RoleName;
 import com.example.model.UserModel;
 import com.example.repository.RoleRepo;
 import com.example.repository.UserRepo;
-import com.example.security.jwt.JwtProvider;
+import com.example.security1.jwt.JwtProvider;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController

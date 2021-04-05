@@ -24,7 +24,6 @@ import {Route, Link} from "react-router-dom";
 function App() {
   return (
   <div className="App">
-    <NavBar />
     <Route exact path="/login" component={Login} />
    {/*  */}
     <Route exact path="/signup" component={Signup} />

@@ -52,12 +52,19 @@ class NavBar extends Component {
   }
 
   render() {
-    return <Navbar color="dark" dark expand="md">
+    return <div style={{marginBottom:"50px",width:"100% !important"}}>
+      <Navbar color="primary" light expand="md">
       <NavbarBrand tag={Link} to="/login">WMP</NavbarBrand>
       <Nav className="mr-auto">
-        <NavLink href="/home">Home</NavLink>
-        {this.state.showUser && <NavLink href="/user">User</NavLink>}
-        {this.state.showAdmin && <NavLink href="/admin">Admin</NavLink>}
+        {/* <NavLink href="/home">Home</NavLink> */}
+        {this.state.showUser && <NavLink href="/addInfo">Add Water Information</NavLink>}
+        {this.state.showUser && <NavLink href="/getWaterInfo/{id}">Your Water Information</NavLink>}
+        {this.state.showUser && <NavLink href="/addFeedback">Feedback</NavLink>}
+        {this.state.showUser && <NavLink href="/getFeedback">Your Feedbacks</NavLink>}
+        
+        {this.state.showAdmin && <NavLink href="/admin">All Water Information</NavLink>}
+        {this.state.showAdmin && <NavLink href="/admin/feedback">All Feedback</NavLink>}
+        {this.state.showAdmin && <NavLink href="/admin/feedback/{id}">Search Feedback</NavLink>}
       </Nav>
       <NavbarToggler onClick={this.toggle}/>
       <Collapse isOpen={this.state.isOpen} navbar>
@@ -86,6 +93,7 @@ class NavBar extends Component {
         }
       </Collapse>
     </Navbar>;
+    </div>
   }
 }
 

@@ -111,7 +111,8 @@ class Login extends Component {
             <Navbar/>
             <Container fluid>
               <Row style={{marginTop:"20px"}}>
-              <Col sm="12" md={{ size: 3, offset: 4 }}>
+              <Col sm="4"></Col>
+              <Col sm="4">
                 
                 <Form onSubmit={this.doLogin}>
                   <FormGroup>
@@ -149,6 +150,7 @@ class Login extends Component {
                   }
                 </Form>
                 </Col>
+                <Col sm={4}></Col>
               </Row>
             </Container>
           </div>);

@@ -299,7 +299,8 @@ class Register extends Component {
             <Navbar/>
             <Container fluid>
               <Row>
-              <Col sm="12" md={{ size: 4, offset: 4 }}>
+              <Col sm={4}></Col>
+              <Col sm={4}>
               {title}
                 <Form onSubmit={this.signUp}>
                   <FormGroup controlid="forFirstname">
@@ -431,6 +432,7 @@ class Register extends Component {
                   {alert}
                 </Form>
                 </Col>
+                <Col sm={4}></Col>
               </Row>
             </Container>
           </div>);

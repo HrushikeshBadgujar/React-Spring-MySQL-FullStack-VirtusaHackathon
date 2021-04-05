@@ -12,6 +12,8 @@ import {InputGroup} from 'react-bootstrap';
 import {FormControl} from 'react-bootstrap';
 import {Form} from 'react-bootstrap';
 
+import Navbar from '../NavBar';
+
 class GetFeedback extends Component {
 
     constructor(props) {
@@ -19,24 +21,13 @@ class GetFeedback extends Component {
 
 
         this.state = {
-            // userid: '',
-            // feedback: '',
             FeedbackTable:[],
         }
-
-        // this.handleUseridChange = this.handleUseridChange.bind(this);
-        // this.handleFeedbackChange = this.handleFeedbackChange.bind(this);
     }
 
     componentDidMount(){
         UserServices.getFeedback(this.state.userid).then( (res) =>{
             this.setState({FeedbackTable: res.data});
-            // let FeedbackTable = res.data;
-            // this.setState({
-            //     userid : FeedbackTable.userid,
-            //     feedback : FeedbackTable.feedback,
-                 
-            // });
         });
     }
 
@@ -58,7 +49,8 @@ class GetFeedback extends Component {
         const {userid, feedback} = this.state
 
         return (
-
+            <div>
+            <Navbar/>
 
             <Container>
                 <Row >
@@ -90,49 +82,7 @@ class GetFeedback extends Component {
                     </tbody>
                 </Table>
             </Container>
-
-            // <div className="container">
-                
-            //         <div className="col-6">
-            //             <h1>Your Feedback</h1>
-
-            //         </div>
-            //         {/* <div className="col-6">
-            //             <h1>Search Feedback</h1>
-
-            //         </div> */}
-
-                
-            //     <div className="row">
-                    
-            //         <div className="col">
-            //             <div >
-            //                 <label>UserID</label>
-            //                 <input type="email" placeholder="Display" />
-            //             </div>  
-
-            //             <br></br>
-            //             <div >
-            //                 <input type="text"  placeholder="Display Feedback" />
-            //             </div>
-            //             <br></br>
-
-            //             <div >
-            //             <input type="text"  placeholder="Display Feedback" />
-            //             </div>
-            //             <br></br>
-
-            //             <div >
-            //             <input type="text"  placeholder="Display Feedback" />
-            //             </div>
-
-                        
-
-            //         </div>
-
-
-            //     </div>
-            // </div>
+            </div>
         
         );
     }

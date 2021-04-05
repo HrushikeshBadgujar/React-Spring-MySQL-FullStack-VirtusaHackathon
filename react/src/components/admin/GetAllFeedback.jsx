@@ -4,6 +4,7 @@ import search from '../../images/search_small.png';
 import AdminServices from '../../Services/AdminServices';
 import AuthenticationService from '../../Services/AuthenticationService'
 
+import Navbar from '../NavBar';
 
 import {Container} from 'react-bootstrap';
 import {Col} from 'react-bootstrap';
@@ -21,8 +22,6 @@ class GetAllFeedback extends Component {
         this.state = {
             FeedbackTable : [],
         }
-
-
     }
 
     componentDidMount(){
@@ -36,6 +35,9 @@ class GetAllFeedback extends Component {
 
     render() {
         return (
+            <div>
+                <Navbar/>
+            
             <Container>
                 <Row >
                     <Col ><Button variant="primary" block><h3>All Feedback</h3></Button></Col>
@@ -63,6 +65,7 @@ class GetAllFeedback extends Component {
                     </tbody>
                 </Table>
             </Container>
+            </div>
         );
     }
 }

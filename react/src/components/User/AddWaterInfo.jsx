@@ -8,6 +8,9 @@ import {Row} from 'react-bootstrap';
 import {Button} from 'react-bootstrap';
 import {Form} from 'react-bootstrap';
 
+import Navbar from '../NavBar';
+
+
 
 class AddWaterInfo extends Component {
 
@@ -83,6 +86,9 @@ class AddWaterInfo extends Component {
         const { location, userid, duration, city, waterdesc, waterpres } = this.state
  
         return (
+            <div>
+                <Navbar/>
+
             <Container>
  
                 <Row >
@@ -159,6 +165,7 @@ class AddWaterInfo extends Component {
                 </Form>
 
             </Container>
+            </div>
 
   
         );

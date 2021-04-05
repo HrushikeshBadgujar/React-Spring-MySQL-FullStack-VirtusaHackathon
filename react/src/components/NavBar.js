@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Collapse, Nav, Navbar, NavbarBrand, NavbarToggler, NavbarText, NavItem, NavLink } from 'reactstrap';
+import {Form,Row,FormGroup, Collapse, Nav, Navbar, NavbarBrand, NavbarToggler, NavbarText, NavItem, NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 import { withRouter } from 'react-router-dom';
@@ -55,18 +55,19 @@ class NavBar extends Component {
     return <div style={{marginBottom:"50px",width:"100% !important"}}>
       <Navbar color="primary" light expand="md">
       <NavbarBrand tag={Link} to="/login">WMP</NavbarBrand>
+
       <Nav className="mr-auto">
         {/* <NavLink href="/home">Home</NavLink> */}
        
-        {this.state.showUser && <NavLink href="/addInfo" style={{color: 'white'}} >Add Water Information</NavLink>}
+        {this.state.showUser && <NavLink href="/addInfo" style={{color: 'black'}} >Add Water Information</NavLink>}
       
-        {this.state.showUser && <NavLink href="/getWaterInfo/{id}">Your Water Information</NavLink>}
-        {this.state.showUser && <NavLink href="/addFeedback">Feedback</NavLink>}
-        {this.state.showUser && <NavLink href="/getFeedback">Your Feedbacks</NavLink>}
+        {this.state.showUser && <NavLink href="/getWaterInfo/{id}" style={{color: 'black'}}>Your Water Information</NavLink>}
+        {this.state.showUser && <NavLink href="/addFeedback" style={{color: 'black'}}>Feedback</NavLink>}
+        {this.state.showUser && <NavLink href="/getFeedback" style={{color: 'black'}}>Your Feedbacks</NavLink>}
         
-        {this.state.showAdmin && <NavLink href="/admin">All Water Information</NavLink>}
-        {this.state.showAdmin && <NavLink href="/admin/feedback">All Feedback</NavLink>}
-        {this.state.showAdmin && <NavLink href="/admin/feedback/{id}">Search Feedback</NavLink>}
+        {this.state.showAdmin && <NavLink href="/admin" style={{color: 'black'}}>All Water Information</NavLink>}
+        {this.state.showAdmin && <NavLink href="/admin/feedback" style={{color: 'black'}}>All Feedback</NavLink>}
+        {this.state.showAdmin && <NavLink href="/admin/feedback/{id}" style={{color: 'black'}}>Search Feedback</NavLink>}
       </Nav>
       <NavbarToggler onClick={this.toggle}/>
       <Collapse isOpen={this.state.isOpen} navbar>
@@ -74,9 +75,16 @@ class NavBar extends Component {
           this.state.login ? (
             <Nav className="ml-auto" navbar>
               <NavItem>
-                  <NavbarText>
+              <Form>
+              <FormGroup as={Row} controlId="formHorizontalUsername">
+                        <Form.Label>UserID</Form.Label>
+                        <Form.Control type="text" placeholder="Username" value={this.state.username} disabled/>
+                        
+            </FormGroup>
+            </Form>
+                  {/* <NavbarText>
                     Signed in as: <a href="/profile">{this.state.username}</a>
-                  </NavbarText>
+                  </NavbarText> */}
               </NavItem>
               <NavItem>
                 <NavLink href="#" onClick={this.signOut}>SignOut</NavLink>
@@ -100,101 +108,3 @@ class NavBar extends Component {
 }
 
 export default withRouter(NavBar);
-
-// import React, { Component, Fragment } from 'react';
-// import {Link} from "react-router-dom";
-// import { Container } from 'reactstrap';
-// import tap from '../images/tap.jfif';
-// import { Navbar,Nav,NavDropdown } from 'react-bootstrap';
-
-// function NavBar(){
-// return (
-//     <Fragment>
-//         <div style={{marginBottom:"50px",width:"100% !important"}}>
-//     <Navbar collapseOnSelect expand="sm" bg="primary" variant="dark">
-//     <Navbar.Brand href="#home">WMP</Navbar.Brand>
-//     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-//     <Navbar.Collapse id="responsive-navbar-nav">
-//       <Nav className="mr-auto">
-//         <Nav.Link href="/login">Login</Nav.Link>
-//         <Nav.Link href="/signup">Signup</Nav.Link>
-//         <NavDropdown title="Water Info" id="collasible-nav-dropdown">
-//           <NavDropdown.Item href="/addInfo">Add Water Info</NavDropdown.Item>
-//           {/*  */}
-//           <NavDropdown.Item href="/GetWaterInfo/:id">Update Water Info</NavDropdown.Item>
-//         </NavDropdown>
-        
-//         {/* Admin Section Checking */}
-//         <NavDropdown title="Admin" id="collasible-nav-dropdown">
-//           <NavDropdown.Item href="/admin">All Water Info</NavDropdown.Item>
-//           <NavDropdown.Item href="/admin/feedback">All Feedback</NavDropdown.Item>
-//           <NavDropdown.Item href="/admin/feedback/:id">Feedback by Id</NavDropdown.Item>
-//         </NavDropdown>
-
-//       </Nav>
-
-
-//       <Nav>
-//         <Nav.Link href="/AddFeedback">Add Feedback</Nav.Link>
-//         <Nav.Link href="/GetFeedback">Get Feedback</Nav.Link>
-//       </Nav>
-//     </Navbar.Collapse>
-//   </Navbar>
-//   </div>
-// </Fragment>
-// )
-// }
-// export default NavBar;
-
-
-
-// // import React, { Component } from 'react';
-// // import { Container, Row, Col } from 'reactstrap';
-// // import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
-
-
-// // class NavBar extends Component {
-// //   render() {
-// //     return (
-// //       <Container>
-// //         <Navbar collapseOnSelect expand="sm" bg="primary" variant="dark">
-// //           <Navbar.Brand href="#home">WMP</Navbar.Brand>
-// //           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-// //           <Navbar.Collapse id="responsive-navbar-nav">
-// //             <Nav className="mr-auto">
-// //               <Nav.Link href="#features">Login</Nav.Link>
-// //               <Nav.Link href="#pricing">Register</Nav.Link>
-// //               <NavDropdown title="Water Info" id="collasible-nav-dropdown">
-// //                 <NavDropdown.Item href="#action/3.1">Add Water Info</NavDropdown.Item>
-// //                 <NavDropdown.Item href="#action/3.2">Update Water Info</NavDropdown.Item>
-// //               </NavDropdown>
-// //             </Nav>
-// //             <Nav>
-// //               <Nav.Link href="#deets">Feedback</Nav.Link>
-// //             </Nav>
-// //           </Navbar.Collapse>
-// //         </Navbar>
-
-// //         <Row>
-// //           <Col>
-// //             <Header />
-// //           </Col>
-// //         </Row>
-
-// //         <Row>
-// //           <Col md={4}>
-// //             <Register />
-// //           </Col>
-// //         </Row>
-
-// //         <Row>
-// //           <Col>
-// //             <Footer />
-// //           </Col>
-// //         </Row>
-// //       </Container>
-// //     );
-// //   }
-// // }
-
-// // export default NavBar;

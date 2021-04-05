@@ -4,6 +4,8 @@ import del from '../../images/delete_small.png';
 import search from '../../images/search_small.png';
 
 import AdminServices from '../../Services/AdminServices';
+import Navbar from '../NavBar';
+
 
 import {Container} from 'react-bootstrap';
 import {Col} from 'react-bootstrap';
@@ -60,27 +62,6 @@ class GetAllWaterInfo extends Component {
         })
     }
 
-
-//     EditWaterInfo = (e) => {
-//         e.preventDefault();
-//         let WaterTable = { userid:this.state.userid, areaname:this.state.areaname, duration: this.state.duration, city: this.state.city, mobileno:this.state.mobileno};
-//         console.log('WaterTable => ' + JSON.stringify(WaterTable));
-
-        
-//         AdminServices.updateWaterInfo(WaterTable).then(res =>{
-// //          path(/employees) => same page     
-// //          this.props.history.push('/employees');
-//         });
-
-//     }
-
-    // DeleteWaterInfo = (e) => {
-    //     e.preventDefault();
-    //     AdminServices.deleteWaterInfo(this.state.userid).then(res =>{  
-    //         this.props.history.push('/admin');
-    //     });
-    // }
-
     deleteWaterInfo(id){
         AdminServices.deleteWaterInfo(id).then(res => {
             this.props.history.push('/admin')
@@ -92,24 +73,14 @@ class GetAllWaterInfo extends Component {
         this.props.history.push(`/admin/${id}`)
     }
 
-    
-//     UpdateWaterInfo = (e) => {
-//         e.preventDefault();
-//         let WaterTable = {mobileno:this.state.mobileno, userid:this.state.userid,areaname:this.state.areaname, duration: this.state.duration, city: this.state.city};
-//         console.log('WaterTable => ' + JSON.stringify(WaterTable));
-
-        
-//         AdminServices.updateWaterInfo(WaterTable).then(res =>{
-// //          path(/employees) => same page     
-// //          this.props.history.push('/employees');
-//         });
-//     }
-
     render() {
         return (
+            <div>
+                <Navbar/>
+            
             <Container>
                 <Row >
-                    <Col ><Button variant="primary" block><h3>Update Water Info</h3></Button></Col>
+                    <Col ><Button variant="primary" block><h3>All Water Information</h3></Button></Col>
                     <Col xs = {4}></Col>
                     <Col><Button variant="primary" block><h3>Search <img src={search} alt="search"/></h3></Button></Col>
                 </Row>
@@ -144,14 +115,8 @@ class GetAllWaterInfo extends Component {
                         }
                     </tbody>
                 </Table>
-                {/* <Form>
-                <Form.Group as={Row}>
-                    <Col >
-                    <Button  onClick={this.UpdateWaterInfo} type="update" >Update</Button>
-                    </Col>
-                </Form.Group>
-                </Form> */}
             </Container>
+            </div>
         );
     }
 }

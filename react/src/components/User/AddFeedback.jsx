@@ -46,17 +46,6 @@ class AddFeedback extends Component {
             this.props.history.push('/admin');
         });
 
-        // // step 5
-        // if(this.state.id === '_add'){
-        //     EmployeeService.createEmployee(employee).then(res =>{
-        //         this.props.history.push('/employees');
-        //     });
-        // }
-        // else{
-        //     EmployeeService.updateEmployee(employee, this.state.id).then( res => {
-        //         this.props.history.push('/employees');
-        //     });
-        // }
     }
 
 

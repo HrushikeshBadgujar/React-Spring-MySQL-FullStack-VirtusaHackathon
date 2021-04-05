@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import search from '../../images/search_small.png';
 
 import AdminServices from '../../Services/AdminServices';
+import AuthenticationService from '../../Services/AuthenticationService'
 
 
 import {Container} from 'react-bootstrap';
@@ -25,6 +26,8 @@ class GetAllFeedback extends Component {
     }
 
     componentDidMount(){
+        // const user = AuthenticationService.getCurrentUser();    
+        // console.log("user : "+ user.username);
         AdminServices.getAllFeedback().then( (res) =>{
             this.setState({FeedbackTable: res.data});
         });

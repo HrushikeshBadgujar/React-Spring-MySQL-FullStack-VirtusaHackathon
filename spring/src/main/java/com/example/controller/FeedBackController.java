@@ -44,7 +44,7 @@ public class FeedBackController {
 
     // get feedback by id 
     @GetMapping("/admin/feedBack/{id}")
-    public ResponseEntity <FeedbackModel> getFeedbackById(@PathVariable String feedbackId){
+    public ResponseEntity <FeedbackModel> getFeedbackById(@PathVariable Long feedbackId){
         FeedbackModel feedbackModel = feedBackRepo.findById(feedbackId).orElseThrow(()-> new ResourceNotFoundException("feedback not found for id: "+ feedbackId));
         return ResponseEntity.ok(feedbackModel);
 

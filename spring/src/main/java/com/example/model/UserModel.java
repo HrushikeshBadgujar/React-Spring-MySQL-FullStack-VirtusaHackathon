@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
@@ -60,6 +62,10 @@ public class UserModel {
     	joinColumns = @JoinColumn(name = "user_id"), 
     	inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
+
+	@OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id") 	
+    private Set<FeedbackModel> feedbackModel = new HashSet<>();
 
 	@NotBlank
 	@Size(min=10, max=10)
@@ -144,6 +150,16 @@ public class UserModel {
 	public void setMobileno(String mobileno) {
 		this.mobileno = mobileno;
 	}
+
+	public Set<FeedbackModel> getFeedbackModel() {
+		return feedbackModel;
+	}
+
+	public void setFeedbackModel(Set<FeedbackModel> feedbackModel) {
+		this.feedbackModel = feedbackModel;
+	}
+
+	
 
 	
 	

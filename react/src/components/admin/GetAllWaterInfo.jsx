@@ -80,7 +80,7 @@ class GetAllWaterInfo extends Component {
             
             <Container>
                 <Row >
-                    <Col ><Button variant="primary" block><h3>Update Water Info</h3></Button></Col>
+                    <Col ><Button variant="primary" block><h3>All Water Information</h3></Button></Col>
                     <Col xs = {4}></Col>
                     <Col><Button variant="primary" block><h3>Search <img src={search} alt="search"/></h3></Button></Col>
                 </Row>

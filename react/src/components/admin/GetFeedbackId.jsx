@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import search from '../../images/search_small.png';
 import del from '../../images/delete_small.png';
 
+import Navbar from '../NavBar';
 import AdminServices from '../../Services/AdminServices';
 
 import {Container} from 'react-bootstrap';
@@ -28,34 +29,13 @@ class GetFeedbackId extends Component {
             FeedbackTable : []
         }
         
-        // this.handleUseridChange = this.handleUseridChange.bind(this);
-        // this.handleFeedbackChange = this.handleFeedbackChange.bind(this);
-        // this.DeleteFeedback = this.DeleteFeedback.bind(this);        
 
     }
 
-    // componentDidMount(){
-    //     AdminServices.getFeedbackId(this.state.id).then( (res) =>{
-    //         this.setState({FeedbackTable : res.data})
-
-    //         // let FeedbackTable = res.data;
-    //         // this.setState({
-    //         //     userid : FeedbackTable.userid,
-    //         //     feedback : FeedbackTable.feedback,
-                 
-    //         // });
-    //     });
-    // }
     componentDidMount(){
         AdminServices.getAllFeedback().then( (res) =>{
             this.setState({FeedbackTable: res.data});
 
-            // let FeedbackTable = res.data;
-            // this.setState({
-            //     userid : FeedbackTable.userid,
-            //     feedback : FeedbackTable.feedback,
-                 
-            // });
         });
     }
 
@@ -79,8 +59,7 @@ class GetFeedbackId extends Component {
         console.log('FeedbackTaable => ' + JSON.stringify(FeedbackTable));
 
         
-        AdminServices.deleteFeedback(FeedbackTable).then(res =>{
-//          path(/employees) => same page     
+        AdminServices.deleteFeedback(FeedbackTable).then(res =>{ 
 //          this.props.history.push('/employees');
         });
 
@@ -88,9 +67,12 @@ class GetFeedbackId extends Component {
 
 
     render() {
-//        const {userid, feedback} = this.state
 
         return (
+
+            <div>
+                <Navbar/>
+            
 
             <Container>
             <Row >
@@ -130,36 +112,7 @@ class GetFeedbackId extends Component {
                 </tbody>
             </Table>
         </Container>
-
-
-            // <div class="container">
-            //     <div class="row">
-            //         <div class="col-sm-4">
-            //             <label>UserID</label>
-            //             <input type="email" placeholder="Display" />
-            //         </div>
-            //         <div class="col-sm-5 ">
-            //         </div>
-            //         <div class="col-sm-2 ">
-            //             <h3>Search User</h3>
-            //         </div>
-            //         <div class="col-sm-1 ">
-            //             <img src={search} alt="search" />
-            //         </div>
-            //     </div>
-            //     <br></br>
-            //     <div class="row">
-            //         <div class="col-sm-8">
-            //             <input type="text"  placeholder="Display Feedback" />
-            //         </div>
-            //         <div class="col-sm-4">
-            //             <img src={del} alt="delete" />
-            //         </div>
-
-            //     </div>
-             
-            // </div>
-
+        </div>
         
         );
     }

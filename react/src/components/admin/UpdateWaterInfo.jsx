@@ -10,6 +10,9 @@ import {Form} from 'react-bootstrap';
 import AdminServices from '../../Services/AdminServices';
 
 
+import Navbar from '../NavBar';
+
+
 class UpdateWaterInfo extends Component {
 
     constructor(props) {
@@ -97,6 +100,9 @@ class UpdateWaterInfo extends Component {
         const { location, duration, city, waterdesc, waterpres } = this.state
  
         return (
+            <div>
+                <Navbar/>
+            
             <Container>
  
                 <Row >
@@ -173,6 +179,7 @@ class UpdateWaterInfo extends Component {
                 </Form>
 
             </Container>
+            </div>
 
   
         );

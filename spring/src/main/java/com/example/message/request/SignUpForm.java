@@ -32,6 +32,8 @@ public class SignUpForm {
 	@Size(min=10, max=10)
     private String mobileno;
 
+    
+
     public String getFirstname() {
         return firstname;
     }

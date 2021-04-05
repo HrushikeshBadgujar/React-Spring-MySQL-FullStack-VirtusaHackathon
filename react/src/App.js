@@ -16,6 +16,7 @@ import Login from './components/User/Login';
 import NavBar from './components/NavBar';
 
 import {Route, Link} from "react-router-dom";
+import UpdateWaterInfo from './components/admin/UpdateWaterInfo';
 
 
 
@@ -37,6 +38,7 @@ function App() {
     {/* Admin Section Checking */}
     
     <Route exact path="/admin" component={GetAllWaterInfo} />
+    <Route exact path = "/admin/:id" component={UpdateWaterInfo}/>
     {/*  */}
     <Route exact path="/admin/feedback/:id" component={GetFeedbackId} />
     <Route exact path="/admin/feedback" component={GetAllFeedback} />

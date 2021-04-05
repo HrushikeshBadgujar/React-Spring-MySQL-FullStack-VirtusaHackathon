@@ -38,32 +38,34 @@ public class WaterController {
         return waterRepo.findAll();
     }
 
-    // // get water info by id
-    // @GetMapping("getWaterInfo/{id}")
-    // public ResponseEntity< WaterModel> getWaterInfoById(@PathVariable Long id){
-    //     WaterModel waterModel = waterRepo.findById(id).orElseThrow(() -> 
-    //         new ResourceNotFoundException("waterInfo not exist for this id"+ id));
+     //get water info by id
+    @GetMapping("getWaterInfo/{id}")
+    @PreAuthorize("hasRole('USER')")
+    public ResponseEntity< WaterModel> getWaterInfoById(@PathVariable Long id){
+        WaterModel waterModel = waterRepo.findById(id).orElseThrow(() -> 
+            new ResourceNotFoundException("waterInfo not exist for this id"+ id));
 
-    //     return ResponseEntity.ok(waterModel);
+        return ResponseEntity.ok(waterModel);
 
-    // }
+    }
 
-    // // update waterInfo
-    // @PutMapping("/admin/{id}")
-    // public ResponseEntity <WaterModel> waterInfoUpdate(@PathVariable Long id, @RequestBody WaterModel waterModelDetails){
+    // update waterInfo
+    @PutMapping("/admin/{id}")
+    @PreAuthorize("hasRole('USER')")
+    public ResponseEntity <WaterModel> waterInfoUpdate(@PathVariable Long id, @RequestBody WaterModel waterModelDetails){
 
-    //     WaterModel waterModel = waterRepo.findById(id).orElseThrow(() -> 
-    //         new ResourceNotFoundException("waterInfo not exist for this id"+ id));
+        WaterModel waterModel = waterRepo.findById(id).orElseThrow(() -> 
+            new ResourceNotFoundException("waterInfo not exist for this id"+ id));
 
-    //     waterModel.setCity(waterModelDetails.getCity());
-    //     waterModel.setLocation(waterModelDetails.getLocation());
-    //     waterModel.setWaterDesc(waterModelDetails.getWaterDesc());
-    //     waterModel.setWaterPres(waterModelDetails.getWaterPres());
+        waterModel.setCity(waterModelDetails.getCity());
+        waterModel.setLocation(waterModelDetails.getLocation());
+        waterModel.setWaterDesc(waterModelDetails.getWaterDesc());
+        waterModel.setWaterPres(waterModelDetails.getWaterPres());
         
 
-    //     WaterModel updatedWaterModel = waterRepo.save(waterModel);
-    //     return ResponseEntity.ok(updatedWaterModel);
-    // }
+        WaterModel updatedWaterModel = waterRepo.save(waterModel);
+        return ResponseEntity.ok(updatedWaterModel);
+    }
 
     //adds new water Info
     @PostMapping("/addInfo")

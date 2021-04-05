@@ -57,7 +57,9 @@ class NavBar extends Component {
       <NavbarBrand tag={Link} to="/login">WMP</NavbarBrand>
       <Nav className="mr-auto">
         {/* <NavLink href="/home">Home</NavLink> */}
-        {this.state.showUser && <NavLink href="/addInfo">Add Water Information</NavLink>}
+       
+        {this.state.showUser && <NavLink href="/addInfo" style={{color: 'white'}} >Add Water Information</NavLink>}
+      
         {this.state.showUser && <NavLink href="/getWaterInfo/{id}">Your Water Information</NavLink>}
         {this.state.showUser && <NavLink href="/addFeedback">Feedback</NavLink>}
         {this.state.showUser && <NavLink href="/getFeedback">Your Feedbacks</NavLink>}

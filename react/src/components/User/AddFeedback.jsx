@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import UserServices from '../../Services/UserServices'
+import NavBar from '../NavBar'
 
 import {Container} from 'react-bootstrap';
 import {Col} from 'react-bootstrap';
@@ -63,7 +64,8 @@ class AddFeedback extends Component {
         const { feedbackId,feedbackDesc } = this.state
         return (
 
-
+            <div>
+                <NavBar/>
             <Container>
                 <Row >
                     <Col ><Button variant="primary" block><h3>Add Feedback</h3></Button></Col>
@@ -94,6 +96,7 @@ class AddFeedback extends Component {
                 </Form>
 
              </Container>
+             </div>
 
            
         );

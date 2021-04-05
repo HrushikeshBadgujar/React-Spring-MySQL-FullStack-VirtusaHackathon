@@ -61,18 +61,18 @@ class GetAllWaterInfo extends Component {
     }
 
 
-    EditWaterInfo = (e) => {
-        e.preventDefault();
-        let WaterTable = { userid:this.state.userid, areaname:this.state.areaname, duration: this.state.duration, city: this.state.city, mobileno:this.state.mobileno};
-        console.log('WaterTable => ' + JSON.stringify(WaterTable));
+//     EditWaterInfo = (e) => {
+//         e.preventDefault();
+//         let WaterTable = { userid:this.state.userid, areaname:this.state.areaname, duration: this.state.duration, city: this.state.city, mobileno:this.state.mobileno};
+//         console.log('WaterTable => ' + JSON.stringify(WaterTable));
 
         
-        AdminServices.updateWaterInfo(WaterTable).then(res =>{
-//          path(/employees) => same page     
-//          this.props.history.push('/employees');
-        });
+//         AdminServices.updateWaterInfo(WaterTable).then(res =>{
+// //          path(/employees) => same page     
+// //          this.props.history.push('/employees');
+//         });
 
-    }
+//     }
 
     // DeleteWaterInfo = (e) => {
     //     e.preventDefault();
@@ -81,24 +81,29 @@ class GetAllWaterInfo extends Component {
     //     });
     // }
 
-    DeleteWaterInfo(id){
+    deleteWaterInfo(id){
         AdminServices.deleteWaterInfo(id).then(res => {
             this.props.history.push('/admin')
         });
     }
 
+    updateWaterInfo(id){
+        console.log("userid: in updatewaterinfomethod: "+ id);
+        this.props.history.push(`/admin/${id}`)
+    }
+
     
-    UpdateWaterInfo = (e) => {
-        e.preventDefault();
-        let WaterTable = {mobileno:this.state.mobileno, userid:this.state.userid,areaname:this.state.areaname, duration: this.state.duration, city: this.state.city};
-        console.log('WaterTable => ' + JSON.stringify(WaterTable));
+//     UpdateWaterInfo = (e) => {
+//         e.preventDefault();
+//         let WaterTable = {mobileno:this.state.mobileno, userid:this.state.userid,areaname:this.state.areaname, duration: this.state.duration, city: this.state.city};
+//         console.log('WaterTable => ' + JSON.stringify(WaterTable));
 
         
-        AdminServices.updateWaterInfo(WaterTable).then(res =>{
-//          path(/employees) => same page     
-//          this.props.history.push('/employees');
-        });
-    }
+//         AdminServices.updateWaterInfo(WaterTable).then(res =>{
+// //          path(/employees) => same page     
+// //          this.props.history.push('/employees');
+//         });
+//     }
 
     render() {
         return (
@@ -131,20 +136,21 @@ class GetAllWaterInfo extends Component {
                                     <td>{WaterTable.location}</td>
                                     <td>{WaterTable.duration}</td>
                                     <td>{WaterTable.city}</td>
-                                    <td ><Button variant="danger" onClick={() => this.DeleteWaterInfo(WaterTable.userid)}><img src={del} alt="delete" /></Button></td>
-                                    <td href="#"><Button variant="warning" onClick={this.EditWaterInfo}><img src={edit} alt="edit" /></Button></td>
+                                    
+                                    <td ><Button variant="danger" onClick={() => this.deleteWaterInfo(WaterTable.userid)}><img src={del} alt="delete" /></Button></td>
+                                    <td ><Button variant="warning" onClick={() =>this.updateWaterInfo(WaterTable.userid)}><img src={edit} alt="edit" /></Button></td>
                                 </tr> 
                             )
                         }
                     </tbody>
                 </Table>
-                <Form>
+                {/* <Form>
                 <Form.Group as={Row}>
                     <Col >
                     <Button  onClick={this.UpdateWaterInfo} type="update" >Update</Button>
                     </Col>
                 </Form.Group>
-                </Form>
+                </Form> */}
             </Container>
         );
     }

@@ -74,17 +74,17 @@ class GetAllWaterInfo extends Component {
 
     }
 
-    DeleteWaterInfo = (e) => {
-        e.preventDefault();
-        // let WaterTable = { userid:this.state.userid,areaname:this.state.areaname, duration: this.state.duration, city: this.state.city, mobileno:this.state.mobileno};
-        // console.log('WaterTable => ' + JSON.stringify(WaterTable));
+    // DeleteWaterInfo = (e) => {
+    //     e.preventDefault();
+    //     AdminServices.deleteWaterInfo(this.state.userid).then(res =>{  
+    //         this.props.history.push('/admin');
+    //     });
+    // }
 
-        
-        AdminServices.deleteWaterInfo(this.state.userid).then(res =>{
-//          path(/employees) => same page     
-            this.props.history.push('/admin');
+    DeleteWaterInfo(id){
+        AdminServices.deleteWaterInfo(id).then(res => {
+            this.props.history.push('/admin')
         });
-
     }
 
     
@@ -131,7 +131,7 @@ class GetAllWaterInfo extends Component {
                                     <td>{WaterTable.location}</td>
                                     <td>{WaterTable.duration}</td>
                                     <td>{WaterTable.city}</td>
-                                    <td href="#"><Button variant="danger" onClick={this.DeleteWaterInfo}><img src={del} alt="delete" /></Button></td>
+                                    <td ><Button variant="danger" onClick={() => this.DeleteWaterInfo(WaterTable.userid)}><img src={del} alt="delete" /></Button></td>
                                     <td href="#"><Button variant="warning" onClick={this.EditWaterInfo}><img src={edit} alt="edit" /></Button></td>
                                 </tr> 
                             )

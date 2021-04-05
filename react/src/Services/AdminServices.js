@@ -21,8 +21,8 @@ class AdminService {
         return await axios.get(EMPLOYEE_API_BASE_URL);
     }
 
-    deleteWaterInfo(userid){
-        return axios.delete(EMPLOYEE_API_BASE_URL + '/' + userid);
+    async deleteWaterInfo(userid){
+        return await axios.delete(EMPLOYEE_API_BASE_URL + '/' + userid);
     }
 
     updateWaterInfo(WaterTable, userId){

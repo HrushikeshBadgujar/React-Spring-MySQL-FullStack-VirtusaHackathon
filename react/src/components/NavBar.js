@@ -52,6 +52,7 @@ class NavBar extends Component {
   }
 
   render() {
+    
     return <div style={{marginBottom:"50px",width:"100% !important"}}>
       <Navbar color="primary" light expand="md">
       <NavbarBrand tag={Link} to="/login">WMP</NavbarBrand>
